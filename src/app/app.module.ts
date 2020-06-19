@@ -12,12 +12,16 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+import { DevicesComponent } from './pages/devices/devices.component';
+import { ChannelsComponent } from './pages/channels/channels.component';
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DevicesComponent,
+    ChannelsComponent
   ],
   imports: [
     ChartsModule,
