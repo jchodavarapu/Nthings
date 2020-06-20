@@ -141,3 +141,62 @@ form {
     margin:1.5rem 1.5rem 0rem 1.5rem;
 }
 
+
+
+.ant-input-group {
+    /* margin: 40px 0; */
+    width: 100%;
+  }
+  .ant-input-group label {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 45px;
+  }
+  .ant-input-group .placeholder {
+    position: absolute;
+    display: block;
+    top: 18px;
+    z-index: 2;
+    font-size: 16px;
+    transition: all 200ms ease-in-out;
+    width: 100%;
+    cursor: text;
+  }
+  .ant-input-group input,
+  .ant-input-group textarea {
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+    width: 100%;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 1px solid grey;
+    transition: border-color 200ms ease-in-out;
+    outline: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ant-input-group textarea {
+    min-height: 30px;
+    padding: 8px 0;
+  }
+  .ant-input-group input {
+    height: 30px;
+  }
+  .ant-input-group input:focus,
+  .ant-input-group input:valid,
+  .ant-input-group textarea:focus,
+  .ant-input-group textarea:valid {
+    border-bottom: 2px solid orange;
+  }
+  .ant-input-group input:focus + .placeholder,
+  .ant-input-group input:valid + .placeholder,
+  .ant-input-group textarea:focus + .placeholder,
+  .ant-input-group textarea:valid + .placeholder {
+    top: 0;
+    cursor: inherit;
+    font-size: 14px;
+    color: orange;
+  }
+  
