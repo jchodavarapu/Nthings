@@ -12,6 +12,14 @@ export class AlertsComponent implements OnInit {
 
   constructor() { }
 
+  addWhitebg() {
+    document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
+    return true
+  }
+  removeWhitebg() {
+    document.getElementById('inner-content').className = "inner-content"
+    return true
+  }
   ngOnInit() {
     this.alerts = from([[
       {

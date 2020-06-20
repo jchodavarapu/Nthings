@@ -53,6 +53,14 @@ export class ChannelsComponent implements OnInit {
 
   constructor(private modalService: NzModalService) { }
 
+  addWhitebg() {
+    document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
+    return true
+  }
+  removeWhitebg() {
+    document.getElementById('inner-content').className = "inner-content"
+    return true
+  }
   ngOnInit() {
     this.channels = from([[
       {

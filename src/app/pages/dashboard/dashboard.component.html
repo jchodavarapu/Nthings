@@ -1,4 +1,4 @@
-<div nz-row nzGutter="16" class="mb-3" nzType="flex" nzJustify="around" nzAlign="stretch">
+<div *ngIf="removeWhitebg" nz-row nzGutter="16" class="mb-3" nzType="flex" nzJustify="around" nzAlign="stretch">
     <div *ngIf="stats | async as statsArr; else loading" style="width: 100%;">
         <div nz-col *ngFor="let item of statsArr" nzSpan="4">
             <nz-card nzHoverable class="text-center">

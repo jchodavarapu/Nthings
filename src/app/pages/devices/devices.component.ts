@@ -6,12 +6,17 @@ import { UploadFile } from 'ng-zorro-antd/upload';
 const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
-  { key: 'message_rate', title: 'message rate', width: '100px',template:'message_rate' },
+  { key: 'message_rate', title: 'message rate', width: '100px', template: 'message_rate' },
   { key: 'image', title: 'image', width: '100px', template: 'image' },
   { key: 'channels', title: 'channels', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  { key: 'status', title: 'status', width: '100px', template: 'status' },
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  disconnected: 'volcano'
+}
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
@@ -20,6 +25,7 @@ const columns = [
 export class DevicesComponent implements OnInit {
   devices: Observable<Device[]>
   columns = columns
+  colrsDict = colrsDict
   view: string = 'grid'
   tplModal: NzModalRef;
   tplModalButtonLoading: boolean = false;
@@ -54,6 +60,14 @@ export class DevicesComponent implements OnInit {
 
   constructor(private modalService: NzModalService) { }
 
+  addWhitebg() {
+    document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
+    return true
+  }
+  removeWhitebg() {
+    document.getElementById('inner-content').className = "inner-content"
+    return true
+  }
   ngOnInit() {
     this.devices = from([[
       {
@@ -70,7 +84,7 @@ export class DevicesComponent implements OnInit {
         message_rate: 2,
         image: 'https://images-na.ssl-images-amazon.com/images/I/411Vi6amGwL._SX342_.jpg',
         channels: 7,
-        status: 'active',
+        status: 'discovered',
       },
       {
         name: 'gas sensor',
@@ -78,7 +92,7 @@ export class DevicesComponent implements OnInit {
         message_rate: 0,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSiehiZ3U6AjfBlr8N7FqPoOgXAPsE3lJJSWXYxI1mmCaB1780V&usqp=CAU',
         channels: 8,
-        status: 'active',
+        status: 'disconnected',
       },
       {
         name: 'humidity sensor',
@@ -94,7 +108,7 @@ export class DevicesComponent implements OnInit {
         message_rate: 4,
         image: 'https://foxlabstore.com/wp-content/uploads/2019/01/DHT11-Temprature-and-Humidity-Sensor-Module-main.jpg',
         channels: 9,
-        status: 'active',
+        status: 'discovered',
       },
       {
         name: 'color sensor',
@@ -102,7 +116,7 @@ export class DevicesComponent implements OnInit {
         message_rate: 0,
         image: 'https://5.imimg.com/data5/DK/PR/MY-47838441/tcs-3200-color-sensor-500x500.jpg',
         channels: 5,
-        status: 'active',
+        status: 'disconnected',
       },
       {
         name: 'ir sensor',

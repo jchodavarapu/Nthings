@@ -13,14 +13,15 @@
             <i nz-icon (click)="toggleView('grid')" class="mr-3 mb-0 pb-0" [nzTheme]="view==='grid'?'twotone':'outline'"
                 style="font-size: 24px;cursor: pointer;" nzType="appstore"></i>
 
-            <button nz-button [routerLink]="['/rule']" nzType="primary" [nzSize]="size"><i nz-icon nzType="plus"></i>Add Rule</button>
+            <button nz-button [routerLink]="['/rule']" nzType="primary" [nzSize]="size"><i nz-icon nzType="plus"></i>Add
+                Rule</button>
         </div>
     </div>
     <ng-template #suffixIconSearch>
         <i nz-icon nzType="search"></i>
     </ng-template>
 
-    <div *ngIf="view==='grid'" class="mb-3">
+    <div *ngIf="view==='grid'&& removeWhitebg()" class="mb-3">
         <div nz-row nzGutter="16">
             <div nz-col nzSpan="6" class="mb-3" *ngFor="let rule of rules | async">
                 <nz-card nzHoverable nzBordered="false">
@@ -73,8 +74,8 @@
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="rules | async" [nzShowPagination]="false">
+    <div *ngIf="view==='list'&& addWhitebg()" class="mb-3">
+        <nz-table class="full-stretch-table" #borderedTable [nzData]="rules | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">

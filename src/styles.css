@@ -3626,10 +3626,10 @@
 }
 
 .color-orange{
-  color:'#FD9600'
+  color:#FD9600
 }
 .color-black{
-  color:'#000000'
+  color:#000000
 }
 .color-green{
   color:#13CB76
@@ -3639,4 +3639,17 @@
 }
 .menu-sidebar li:focus{
   outline: transparent !important;
+}
+
+.bg-button-grey{
+  background-color:#F2F3F5
+}
+
+/* .ant-card-hoverable:hover {
+  border: 1px solid blue;
+} */
+
+.full-stretch-table {
+  margin-left:-24px;
+  margin-right:-24px
 }

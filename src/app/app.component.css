@@ -73,8 +73,11 @@ nz-content {
   margin: 24px;
 }
 
+.inner-content-white-bg {
+  background: #fff;
+}
 .inner-content {
   padding: 24px;
-  /* background: #fff; */
-  height: 100%;
+  margin-bottom: 24px
+  /* min-height: 100%; */
 }

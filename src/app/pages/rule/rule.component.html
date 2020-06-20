@@ -3,7 +3,7 @@
     <nz-step nzTitle="Rules"></nz-step>
     <nz-step nzTitle="Alerts"></nz-step>
 </nz-steps>
-<div class="py-5">
+<div class="py-5" *ngIf="removeWhitebg()">
     <div tab="Device" *ngIf="index===0">
         <ng-template #suffixIconSearch>
             <i nz-icon nzType="search"></i>

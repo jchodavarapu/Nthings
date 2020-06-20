@@ -75,7 +75,7 @@
         </div>
     </div>
     <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="formats | async" [nzShowPagination]="false">
+        <nz-table class="full-stretch-table" #borderedTable [nzData]="formats | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">

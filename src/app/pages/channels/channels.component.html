@@ -21,11 +21,11 @@
         <i nz-icon nzType="search"></i>
     </ng-template>
 
-    <div *ngIf="view==='grid'" class="mb-3">
+    <div *ngIf="view==='grid'&&removeWhitebg()" class="mb-3">
         <div nz-row nzGutter="16">
             <div nz-col nzSpan="6" class="mb-3" *ngFor="let channel of channels | async">
                 <nz-card nzHoverable nzBordered="false">
-                    <nz-card-meta [nzTitle]="extraTemplate" [nzDescription]="channel.description"></nz-card-meta>
+                    <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
                         <button nz-button nzSize="small" nzType="default">{{channel.devices}} Devices</button>
                     </div>
@@ -41,7 +41,13 @@
                 </nz-card>
                 <ng-template #extraTemplate>
                     <div class="d-flex justify-content-between">
-                        <p class="text-capitalize">{{channel.name}}</p>
+                        <div>
+                            <p class="text-capitalize mb-0">{{channel.name}}</p>
+                            <p class="ant-card-meta-description text-capitalize ng-star-inserted"
+                                style="font-size:14px">
+                                {{channel.description}}
+                            </p>
+                        </div>
                         <a nz-dropdown [nzDropdownMenu]="menu">
                             <i nz-icon nzType="more" nzTheme="outline"></i>
                         </a>
@@ -62,8 +68,8 @@
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="channels | async" [nzShowPagination]="false">
+    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3">
+        <nz-table class="full-stretch-table" #borderedTable [nzData]="channels | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">

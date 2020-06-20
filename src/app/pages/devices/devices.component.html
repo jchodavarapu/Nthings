@@ -1,4 +1,4 @@
-<div>
+<div class="">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
@@ -21,17 +21,22 @@
         <i nz-icon nzType="search"></i>
     </ng-template>
 
-    <div *ngIf="view==='grid'" class="mb-3">
+    <div *ngIf="view==='grid'&& removeWhitebg()" class="mb-3">
         <div nz-row nzGutter="16">
             <div nz-col nzSpan="6" class="mb-3" *ngFor="let device of devices | async">
-                <nz-card nzHoverable [nzCover]="coverTemplate" >
-                    <nz-card-meta [nzTitle]="extraTemplate" [nzDescription]="device.description"></nz-card-meta>
+                <nz-card nzHoverable [nzCover]="coverTemplate">
+                    <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
-                        <button nz-button nzSize="small" nzType="default">{{device.channels}} Channels</button>
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                            <b>
+                                {{device.channels}}
+                            </b>
+                            Channels</div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-0">
-                            <i nz-icon nzType="heart" [nzTheme]="device.message_rate>0?'twotone':'outline'"></i>
+                            <i nz-icon nzType="heart" [ngClass]="{'color-green': device.message_rate>0}"
+                                [nzTheme]="device.message_rate>0?'fill':'outline'"></i>
                             {{device.message_rate}} msg/sec
                         </p>
                         <p class="mb-0">
@@ -40,15 +45,23 @@
                     </div>
                 </nz-card>
                 <ng-template #coverTemplate>
-                    <img style="height:180px" *ngIf="device.image===null" src="../../../assets/images/no_image.jpg"
-                        alt="">
-                    <img style="height:180px" *ngIf="device.image" alt="example" [src]="device.image" />
+                    <div style="height: 100px;margin-top:24px" class="d-flex justify-content-center">
+                        <img style="height:100%" *ngIf="device.image===null" src="../../../assets/images/no_image.jpg"
+                            alt="">
+                        <img style="height:100%" *ngIf="device.image" alt="example" [src]="device.image" />
+                    </div>
                 </ng-template>
                 <ng-template #extraTemplate>
                     <div class="d-flex justify-content-between">
-                        <p class="text-capitalize">
-                            {{device.name}}
-                        </p>
+                        <div>
+                            <p class="text-capitalize mb-0">
+                                {{device.name}}
+                            </p>
+                            <p class="ant-card-meta-description text-capitalize ng-star-inserted"
+                                style="font-size:14px">
+                                {{device.description}}
+                            </p>
+                        </div>
                         <a nz-dropdown [nzDropdownMenu]="menu">
                             <i nz-icon nzType="more" nzTheme="outline"></i>
                         </a>
@@ -69,8 +82,8 @@
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="devices | async" [nzShowPagination]="false">
+    <div *ngIf="view==='list'&& addWhitebg()" class="mb-3">
+        <nz-table #borderedTable class="full-stretch-table" [nzData]="devices | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">
@@ -100,6 +113,10 @@
                             <ng-template #noImage>
                                 <i nz-icon [nzType]=" 'file' "></i> NA
                             </ng-template>
+                        </div>
+                        <div *ngIf="column.template==='status'">
+                            <nz-tag class="text-capitalize" [nzColor]="colrsDict[data[column.key]]">{{data[column.key]}}
+                            </nz-tag>
                         </div>
 
 
