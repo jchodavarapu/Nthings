@@ -6,9 +6,14 @@ const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
   { key: 'users', title: 'users', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  { key: 'status', title: 'status', width: '100px',template: 'status'},
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  inactive: 'volcano'
+}
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
@@ -18,6 +23,7 @@ export class RolesComponent implements OnInit {
   models: any;
   roles: Observable<Role[]>
   columns = columns
+  colrsDict = colrsDict
   view: string = 'grid'
   tplModal: NzModalRef;
   tplModalButtonLoading: boolean = false;

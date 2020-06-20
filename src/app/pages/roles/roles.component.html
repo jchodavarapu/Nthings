@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
-                <input type="text" nz-input placeholder="input search text" />
+                <input type="text" nz-input placeholder="Search" />
             </nz-input-group>
         </div>
         <div class="d-flex justify-content-between align-items-center">
@@ -21,17 +21,30 @@
         <i nz-icon nzType="search"></i>
     </ng-template>
 
-    <div *ngIf="view==='grid'" class="mb-3">
+    <div *ngIf="view==='grid'&& removeWhitebg()" class="mb-3">
         <div nz-row nzGutter="16">
             <div nz-col nzSpan="6" class="mb-3" *ngFor="let role of roles | async">
                 <nz-card nzHoverable nzBordered="false">
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
-                        <button nz-button nzSize="small" nzType="default">{{role.users}} Users</button>
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                            <b>
+                                {{role.users}}
+                            </b>
+                            Users</div>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-0">
-                            <i nz-icon nzType="heart" [nzTheme]="role.message_rate>0?'twotone':'outline'"></i>
+                        <p class="mb-0 text-capitalize">
+                            <i nz-icon
+                                [ngClass]="{'color-green': role.status==='active','color-inactive':role.status==='inactive'}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                                    <g id="Ellipse_241" data-name="Ellipse 241" fill="currentcolor" stroke="#13cbb4"
+                                        stroke-width="0">
+                                        <circle cx="6" cy="6" r="6" stroke="none" />
+                                        <circle cx="6" cy="6" r="5.5" fill="none" />
+                                    </g>
+                                </svg>
+                            </i>
                             {{role.status}}
                         </p>
                         <p class="mb-0">
@@ -67,7 +80,7 @@
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'" class="mb-3">
+    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3">
         <nz-table class="full-stretch-table" #borderedTable [nzData]="roles | async" [nzShowPagination]="false">
             <thead>
                 <tr>
@@ -93,7 +106,10 @@
                                 <i nz-icon [nzType]=" 'file' "></i> NA
                             </ng-template>
                         </div>
-
+                        <div *ngIf="column.template==='status'">
+                            <nz-tag class="text-capitalize" [nzColor]="colrsDict[data[column.key]]">{{data[column.key]}}
+                            </nz-tag>
+                        </div>
 
                         <div *ngIf="!column.template">
                             {{data[column.key]}}

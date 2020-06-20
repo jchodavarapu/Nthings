@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
-                <input type="text" nz-input placeholder="input search text" />
+                <input type="text" nz-input placeholder="Search" />
             </nz-input-group>
         </div>
         <div class="d-flex justify-content-between align-items-center">
@@ -32,11 +32,21 @@
                     </div>
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
-                        <button nz-button nzSize="small" class="text-capitalize" nzType="default">{{user.role}}</button>
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block text-capitalize">
+                            {{user.role}}</div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-0 text-capitalize">
-                            <i nz-icon nzType="check-circle" [nzTheme]="'fill'"></i>
+                            <i nz-icon
+                                [ngClass]="{'color-green': user.status==='active','color-inactive':user.status==='inactive'}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                                    <g id="Ellipse_241" data-name="Ellipse 241" fill="currentcolor" stroke="#13cbb4"
+                                        stroke-width="0">
+                                        <circle cx="6" cy="6" r="6" stroke="none" />
+                                        <circle cx="6" cy="6" r="5.5" fill="none" />
+                                    </g>
+                                </svg>
+                            </i>
                             {{user.status}}
                         </p>
                         <p class="mb-0">
@@ -112,7 +122,10 @@
                             </ng-template>
                         </div>
 
-
+                        <div *ngIf="column.template==='status'">
+                            <nz-tag class="text-capitalize" [nzColor]="colrsDict[data[column.key]]">{{data[column.key]}}
+                            </nz-tag>
+                        </div>
                         <div *ngIf="!column.template">
                             {{data[column.key]}}
                         </div>

@@ -9,9 +9,14 @@ const columns = [
   { key: 'description', title: 'description', width: '100px' },
   // { key: 'message_rate', title: 'message rate', width: '100px', template: 'message_rate' },
   { key: 'conditions', title: 'conditions', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  { key: 'status', title: 'status', width: '100px', template: 'status' },
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  inactive: 'volcano'
+}
 @Component({
   selector: 'app-rules',
   templateUrl: './rules.component.html',
@@ -19,6 +24,7 @@ const columns = [
 })
 export class RulesComponent implements OnInit {
   rules: Observable<Rule[]>
+  colrsDict = colrsDict
   columns = columns
   view: string = 'grid'
 
@@ -71,7 +77,7 @@ export class RulesComponent implements OnInit {
         smss: 5,
         webhooks: 6,
         conditions: 8,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Rule - 4',
@@ -89,7 +95,7 @@ export class RulesComponent implements OnInit {
         smss: 5,
         webhooks: 6,
         conditions: 9,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Rule - 6',
@@ -98,7 +104,7 @@ export class RulesComponent implements OnInit {
         smss: 0,
         webhooks: 0,
         conditions: 5,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Rule - 7',

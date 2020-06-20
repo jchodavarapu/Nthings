@@ -7,9 +7,14 @@ const columns = [
   { key: 'description', title: 'description', width: '100px' },
   // { key: 'message_rate', title: 'message rate', width: '100px', template: 'message_rate' },
   { key: 'channels', title: 'channels', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  { key: 'status', title: 'status', width: '100px',template: 'status'},
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  inactive: 'volcano'
+}
 @Component({
   selector: 'app-formats',
   templateUrl: './formats.component.html',
@@ -18,6 +23,7 @@ const columns = [
 export class FormatsComponent implements OnInit {
   formats: Observable<Format[]>
   columns = columns
+  colrsDict = colrsDict
   view: string = 'grid'
 
   constructor() {

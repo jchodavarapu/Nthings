@@ -7,12 +7,17 @@ const columns = [
   { key: 'firstName', title: 'first name', width: '100px' },
   { key: 'lastName', title: 'last name', width: '100px' },
   { key: 'email', title: 'email', width: '100px' },
-  { key: 'cover_image', title: 'cover image', width: '100px', template: 'image' },
+  // { key: 'cover_image', title: 'cover image', width: '100px', template: 'image' },
   { key: 'profile_image', title: 'profile image', width: '100px', template: 'image' },
-  { key: 'role', title: 'role', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  // { key: 'role', title: 'role', width: '100px' },
+  { key: 'status', title: 'status', width: '100px', template: 'status' },
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  inactive: 'volcano'
+}
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -21,6 +26,7 @@ const columns = [
 export class UsersComponent implements OnInit {
   users: Observable<User[]>
   columns = columns
+  colrsDict = colrsDict
   view: string = 'grid'
   tplModal: NzModalRef;
   tplModalButtonLoading: boolean = false;

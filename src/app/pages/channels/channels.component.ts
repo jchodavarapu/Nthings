@@ -2,15 +2,19 @@ import { Component, OnInit, TemplateRef, ViewChild, ElementRef } from '@angular/
 import { Channel } from 'src/app/core/models';
 import { Observable, from } from 'rxjs';
 import { NzModalService, NzModalRef } from 'ng-zorro-antd';
-import { UploadFile } from 'ng-zorro-antd/upload';
 const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
   { key: 'message_rate', title: 'message rate', width: '100px', template: 'message_rate' },
   { key: 'devices', title: 'devices', width: '100px' },
-  { key: 'status', title: 'status', width: '100px' },
+  { key: 'status', title: 'status', width: '100px', template: 'status' },
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
+const colrsDict = {
+  active: 'blue',
+  discovered: 'green',
+  inactive: 'volcano'
+}
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
@@ -19,25 +23,10 @@ const columns = [
 export class ChannelsComponent implements OnInit {
   channels: Observable<Channel[]>
   columns = columns
+  colrsDict = colrsDict
   view: string = 'grid'
   tplModal: NzModalRef;
   tplModalButtonLoading: boolean = false;
-
-  showUploadList = {
-    showPreviewIcon: true,
-    showRemoveIcon: true,
-    hidePreviewIconInNonImage: true
-  };
-  fileList = [
-    // {
-    //   uid: -1,
-    //   name: 'xxx.png',
-    //   status: 'done',
-    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-    // }
-  ];
-  previewImage: string | undefined = '';
-  previewVisible = false;
 
 
   devices = ['Device 1', 'Device 2'];
@@ -89,7 +78,7 @@ export class ChannelsComponent implements OnInit {
         description: 'Awesome decription',
         message_rate: 1,
         devices: 15,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Channel - 5',
@@ -103,14 +92,14 @@ export class ChannelsComponent implements OnInit {
         description: 'Awesome decription',
         message_rate: 0,
         devices: 5,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Channel - 7',
         description: 'Awesome decription',
         message_rate: 23,
         devices: 5,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Channel - 8',
@@ -148,12 +137,6 @@ export class ChannelsComponent implements OnInit {
       this.tplModal.destroy();
     }, 1000);
   }
-
-  handlePreview = (file: UploadFile) => {
-    this.previewImage = file.url || file.thumbUrl;
-    this.previewVisible = true;
-  };
-
 
   handleDeviceClose(removedTag: {}): void {
     this.devices = this.devices.filter(tag => tag !== removedTag);

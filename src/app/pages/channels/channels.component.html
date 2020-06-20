@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
-                <input type="text" nz-input placeholder="input search text" />
+                <input type="text" nz-input placeholder="Search" />
             </nz-input-group>
         </div>
         <div class="d-flex justify-content-between align-items-center">
@@ -27,11 +27,16 @@
                 <nz-card nzHoverable nzBordered="false">
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
-                        <button nz-button nzSize="small" nzType="default">{{channel.devices}} Devices</button>
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                            <b>
+                                {{channel.devices}}
+                            </b>
+                            Devices</div>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-0">
-                            <i nz-icon nzType="heart" [nzTheme]="channel.message_rate>0?'twotone':'outline'"></i>
+                            <i nz-icon nzType="heart" [ngClass]="{'color-green': channel.message_rate>0}"
+                                [nzTheme]="channel.message_rate>0?'fill':'outline'"></i>
                             {{channel.message_rate}} msg/sec
                         </p>
                         <p class="mb-0">
@@ -85,6 +90,10 @@
                                 {{data[column.key]||0}}
                             </b> msg/sec
                         </div>
+                        <div *ngIf="column.template==='status'">
+                            <nz-tag class="text-capitalize" [nzColor]="colrsDict[data[column.key]]">{{data[column.key]}}
+                            </nz-tag>
+                        </div>
                         <div *ngIf="column.template==='action'">
                             <a><i nz-icon [nzType]=" 'eye' "></i></a>
                             <nz-divider nzType="vertical"></nz-divider>
@@ -121,25 +130,9 @@
         <span>Add Channel</span>
     </ng-template>
     <ng-template #tplContent>
-        <div class="d-flex align-items-center mb-3">
-            <div class="upload">
-                <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/" nzListType="picture-card"
-                    [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1" [nzShowUploadList]="showUploadList"
-                    [nzPreview]="handlePreview">
-                    <i nz-icon nzType="plus"></i>
-                    <div class="ant-upload-text">Picture</div>
-                </nz-upload>
-                <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
-                    (nzOnCancel)="previewVisible = false">
-                    <ng-template #modalContent>
-                        <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
-                    </ng-template>
-                </nz-modal>
-            </div>
-            <div>
-                <input class="mb-3" nz-input placeholder="Channel 1" />
-                <textarea rows="3" nz-input placeholder="Awesome Description"></textarea>
-            </div>
+        <div class=" mb-3">
+            <input class="mb-3" nz-input placeholder="Channel 1" />
+            <textarea rows="3" nz-input placeholder="Awesome Description"></textarea>
         </div>
 
         <div class="mb-3">

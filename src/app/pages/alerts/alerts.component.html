@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-start align-items-center mb-3">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
-                <input type="text" nz-input placeholder="input search text" />
+                <input type="text" nz-input placeholder="Search" />
             </nz-input-group>
         </div>
     </div>
@@ -23,7 +23,7 @@
                         </h1>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <div>
+                        <div class=" color-orange">
                             <i class="ml-2" *ngIf="alert.emails>0" nz-icon nzType="mail"></i>
                             <i class="ml-2" *ngIf="alert.smss>0" nz-icon nzType="message"></i>
                             <i class="ml-2" *ngIf="alert.webhooks>0" nz-icon nzType="global"></i>
@@ -48,8 +48,8 @@
                     <nz-dropdown-menu #menu="nzDropdownMenu">
                         <ul nz-menu nzSelectable>
                             <li nz-menu-item>View</li>
-                            <li nz-menu-item>Edit</li>
-                            <li nz-menu-item>Delete</li>
+                            <li nz-menu-item [routerLink]="['/alert']">Take action</li>
+                            <li nz-menu-item>Ignore</li>
                         </ul>
                     </nz-dropdown-menu>
                 </ng-template>
