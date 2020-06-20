@@ -1,0 +1,55 @@
+<div class="m-4 F-set">
+    <p>Let's create your new account.</p>
+</div>
+<div>
+    <form nz-form class="login-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Full Name</nz-form-label>
+                    <input type="text" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Email</nz-form-label>
+                    <input type="text" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Password</nz-form-label>
+                    <input type="password" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div>
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">CREATE
+                ACCOUNT</button>
+        </div>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control>
+                <label nz-checkbox>
+                    <span style="font-size: 12px;">I have read and accept the <a><span class="txt-dec">terms
+                                and conditions</span></a></span>
+                </label>
+            </nz-form-control>
+        </nz-form-item>
+        <div class="login-form-forgot1">
+            <span>Have an account already?</span><a [routerLink]="['/auth/signin']" class="pl-1">Sign in</a>
+        </div>
+    </form>
+</div>

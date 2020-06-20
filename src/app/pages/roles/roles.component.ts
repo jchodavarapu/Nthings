@@ -61,7 +61,7 @@ export class RolesComponent implements OnInit {
         name: 'Operator',
         description: 'Awesome decription',
         users: 7,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Maintainer',
@@ -73,13 +73,13 @@ export class RolesComponent implements OnInit {
         name: 'Default',
         description: 'Awesome decription',
         users: 15,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Manager',
         description: 'Awesome decription',
         users: 9,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Custom role',

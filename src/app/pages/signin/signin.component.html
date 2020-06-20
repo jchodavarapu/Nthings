@@ -1,0 +1,43 @@
+<div class="m-4 F-set">
+    <p>Welcome back. Sign In below.</p>
+</div>
+<div>
+    <form nz-form class="login-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Email</nz-form-label>
+                    <input type="text" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Password</nz-form-label>
+                    <input type="password" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div>
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">SIGN IN</button>
+        </div>
+        <div class="login-form-forgot">
+            <a [routerLink]="['/auth/forgot-password']">Forgot password</a>
+        </div>
+        <div class="login-form-forgot1">
+            <span>Don't have a account?</span><a [routerLink]="['/auth/signup']">Register Here</a>
+        </div>
+        <div class="login-form-forgot2">
+            <p>By continuing, you agree to our <br> <span class="txt-dec">Terms & Conditions</span> and <span
+                    class="txt-dec">Privacy Policy</span></p>
+        </div>
+
+    </form>
+</div>

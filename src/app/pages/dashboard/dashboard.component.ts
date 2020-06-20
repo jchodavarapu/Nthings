@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
         { key: 'rules', value: 30 },
         { key: 'alerts', value: 20 },
       ]])
-    }, 1000);
+    }, 300);
 
     setInterval(() => {
       //Temp

@@ -27,7 +27,10 @@
                 <nz-card nzHoverable nzBordered="false">
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3 d-flex justify-content-between">
-                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">{{format.channels}}
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                            <b>
+                                {{format.channels}}
+                            </b>
                             Channels</div>
                         <div>
                             <i class="ml-2" *ngIf="format.emails>0" nz-icon nzType="mail"></i>

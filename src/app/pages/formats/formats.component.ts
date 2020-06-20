@@ -49,7 +49,7 @@ export class FormatsComponent implements OnInit {
         name: 'Format - 2',
         description: 'Awesome decription',
         channels: 7,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Format - 3',
@@ -67,13 +67,13 @@ export class FormatsComponent implements OnInit {
         name: 'Format - 5',
         description: 'Awesome decription',
         channels: 9,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Format - 6',
         description: 'Awesome decription',
         channels: 5,
-        status: 'active',
+        status: 'inactive',
       },
       {
         name: 'Format - 7',
@@ -85,7 +85,7 @@ export class FormatsComponent implements OnInit {
         name: 'Format - 8',
         description: 'Awesome decription',
         channels: 5,
-        status: 'active',
+        status: 'inactive',
       },
     ]])
   }

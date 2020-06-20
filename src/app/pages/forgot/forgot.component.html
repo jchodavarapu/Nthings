@@ -1,0 +1,24 @@
+<p class="m4 F-set">Forgot Password</p>
+<p style="font-size: 12px; text-align: center;">We'll send you a link to reset your password.</p>
+<div class="mt-5">
+    <form nz-form class="login-form">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group>
+                    <nz-form-label class="label-txt">Account E-mail</nz-form-label>
+                    <input type="text" class="input">
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div style="margin: 10px;">
+            <button nz-button class="forgot-form-button login-form-margin" [nzType]="'primary'">RESET
+                PASSWORD</button>
+        </div>
+        <div class="forgot-form-cancel">
+            <a [routerLink]="['/auth/signin']">Cancel</a>
+        </div>
+    </form>
+</div>

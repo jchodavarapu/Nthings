@@ -23,7 +23,12 @@ import { NgJsonSchema } from 'ng-jsonschema';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
 import { FormatComponent } from './pages/format/format.component';
 import { UsersComponent } from './pages/users/users.component';
-import { FormatsComponent } from './pages/formats/formats.component' 
+import { FormatsComponent } from './pages/formats/formats.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { AuthComponent } from './layouts/auth/auth.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { ForgotComponent } from './pages/forgot/forgot.component' 
 registerLocaleData(en);
 
 @NgModule({
@@ -39,7 +44,12 @@ registerLocaleData(en);
     RolesComponent,
     FormatComponent,
     UsersComponent,
-    FormatsComponent
+    FormatsComponent,
+    DefaultComponent,
+    AuthComponent,
+    SigninComponent,
+    SignupComponent,
+    ForgotComponent
   ],
   imports: [
     NgJsonEditorModule,
