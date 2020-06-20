@@ -10,6 +10,7 @@ import { AlertsComponent } from './pages/alerts/alerts.component';
 import { RolesComponent } from './pages/roles/roles.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FormatComponent } from './pages/format/format.component';
+import { FormatsComponent } from './pages/formats/formats.component';
 
 const routes: Routes = [
   // { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'roles', component: RolesComponent, pathMatch: 'full' },
   { path: 'users', component: UsersComponent, pathMatch: 'full' },
   { path: 'format', component: FormatComponent, pathMatch: 'full' },
+  { path: 'formats', component: FormatsComponent, pathMatch: 'full' },
   { path: '*', pathMatch: 'full', redirectTo: '' },
 ];
 

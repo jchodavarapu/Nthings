@@ -1,0 +1,124 @@
+<div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div nz-col nzSpan="5">
+            <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
+                <input type="text" nz-input placeholder="input search text" />
+            </nz-input-group>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <i nz-icon (click)="toggleView('list')" class="mr-3 mb-0 pb-0" nzType="unordered-list"
+                [style.color]="view==='list'?'rgb(24, 144, 255)':'inherit'" style="font-size: 24px;cursor: pointer;"
+                nzTheme="outline"></i>
+
+            <i nz-icon (click)="toggleView('grid')" class="mr-3 mb-0 pb-0" [nzTheme]="view==='grid'?'twotone':'outline'"
+                style="font-size: 24px;cursor: pointer;" nzType="appstore"></i>
+
+            <button nz-button [routerLink]="['/format']" nzType="primary" [nzSize]="size"><i nz-icon
+                    nzType="plus"></i>Add Format</button>
+        </div>
+    </div>
+    <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+    </ng-template>
+
+    <div *ngIf="view==='grid'" class="mb-3">
+        <div nz-row nzGutter="16">
+            <div nz-col nzSpan="6" class="mb-3" *ngFor="let format of formats | async">
+                <nz-card nzHoverable nzBordered="false">
+                    <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
+                    <div class="my-3 d-flex justify-content-between">
+                        <button nz-button nzSize="small" nzType="default">{{format.channels}} Channels</button>
+                        <div>
+                            <i class="ml-2" *ngIf="format.emails>0" nz-icon nzType="mail"></i>
+                            <i class="ml-2" *ngIf="format.smss>0" nz-icon nzType="message"></i>
+                            <i class="ml-2" *ngIf="format.webhooks>0" nz-icon nzType="global"></i>
+
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-0">
+                            <i nz-icon nzType="heart" [nzTheme]="format.status==='active'?'twotone':'outline'"></i>
+                            {{format.status}}
+                        </p>
+                        <p class="mb-0">
+                            5 min ago
+                        </p>
+                    </div>
+                </nz-card>
+                <ng-template #extraTemplate>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-capitalize mb-0">{{format.name}}</p>
+                            <p class="ant-card-meta-description text-capitalize ng-star-inserted"
+                                style="font-size:14px">
+                                {{format.description}}
+                            </p>
+                        </div>
+                        <a nz-dropdown [nzDropdownMenu]="menu">
+                            <i nz-icon nzType="more" nzTheme="outline"></i>
+                        </a>
+                    </div>
+                    <nz-dropdown-menu #menu="nzDropdownMenu">
+                        <ul nz-menu nzSelectable>
+                            <li nz-menu-item>View</li>
+                            <li nz-menu-item>Edit</li>
+                            <li nz-menu-item>Delete</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                </ng-template>
+
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Formats</p>
+            <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
+        </div>
+    </div>
+    <div *ngIf="view==='list'" class="mb-3">
+        <nz-table #borderedTable [nzData]="formats | async" [nzShowPagination]="false">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">
+                        {{column.title}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of borderedTable.data">
+                    <td *ngFor="let column of columns">
+
+                        <div *ngIf="column.template==='message_rate'">
+                            <b>
+                                {{data[column.key]||0}}
+                            </b> msg/sec
+                        </div>
+                        <div *ngIf="column.template==='action'">
+                            <a><i nz-icon [nzType]=" 'eye' "></i></a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a><i nz-icon [nzType]=" 'edit' "></i></a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a><i nz-icon [nzType]=" 'delete' "></i></a>
+                        </div>
+                        <div *ngIf="column.template==='image'">
+                            <div *ngIf="data[column.key]; else noImage">
+                                <img [src]="data[column.key]" style="height:32px" alt="">
+                            </div>
+                            <ng-template #noImage>
+                                <i nz-icon [nzType]=" 'file' "></i> NA
+                            </ng-template>
+                        </div>
+
+
+                        <div *ngIf="!column.template">
+                            {{data[column.key]}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <div class="d-flex justify-content-between mt-3">
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Formats</p>
+            <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
+        </div>
+
+    </div>
+</div>

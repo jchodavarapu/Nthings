@@ -3624,3 +3624,19 @@
 .profile-upload .ant-upload{
   border-radius: 50%
 }
+
+.color-orange{
+  color:'#FD9600'
+}
+.color-black{
+  color:'#000000'
+}
+.color-green{
+  color:#13CB76
+}
+.color-cyan{
+  color:#13CBB4
+}
+.menu-sidebar li:focus{
+  outline: transparent !important;
+}

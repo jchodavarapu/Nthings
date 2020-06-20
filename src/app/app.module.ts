@@ -22,7 +22,8 @@ import { RolesComponent } from './pages/roles/roles.component';
 import { NgJsonSchema } from 'ng-jsonschema';
 import { NgJsonEditorModule } from 'ang-jsoneditor';
 import { FormatComponent } from './pages/format/format.component';
-import { UsersComponent } from './pages/users/users.component' 
+import { UsersComponent } from './pages/users/users.component';
+import { FormatsComponent } from './pages/formats/formats.component' 
 registerLocaleData(en);
 
 @NgModule({
@@ -37,7 +38,8 @@ registerLocaleData(en);
     AlertComponent,
     RolesComponent,
     FormatComponent,
-    UsersComponent
+    UsersComponent,
+    FormatsComponent
   ],
   imports: [
     NgJsonEditorModule,

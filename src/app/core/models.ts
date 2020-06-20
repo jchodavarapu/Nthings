@@ -50,3 +50,9 @@ export interface User {
     cover_image?: string;
     profile_image?: string;
 }
+export interface Format {
+    name: string;
+    description: string;
+    channels: number;
+    status: string;
+}
