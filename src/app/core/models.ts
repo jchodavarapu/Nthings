@@ -17,3 +17,21 @@ export interface Channel {
     devices: number;
     status: string;
 }
+export interface Rule {
+    name: string;
+    description: string;
+    emails: number;
+    smss: number;
+    webhooks: number;
+    conditions: number;
+    status: string;
+}
+export interface Alert {
+    name: string;
+    description: string;
+    emails: number;
+    smss: number;
+    webhooks: number;
+    alerts: number;
+    status: string;
+}

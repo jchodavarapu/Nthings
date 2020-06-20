@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { QueryBuilderModule } from "angular2-query-builder";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider/icons-provider.module';
@@ -14,6 +14,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { DevicesComponent } from './pages/devices/devices.component';
 import { ChannelsComponent } from './pages/channels/channels.component';
+import { RulesComponent } from './pages/rules/rules.component';
+import { RuleComponent } from './pages/rule/rule.component';
+import { AlertsComponent } from './pages/alerts/alerts.component';
+import { AlertComponent } from './pages/alert/alert.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -21,9 +25,14 @@ registerLocaleData(en);
     AppComponent,
     DashboardComponent,
     DevicesComponent,
-    ChannelsComponent
+    ChannelsComponent,
+    RulesComponent,
+    RuleComponent,
+    AlertsComponent,
+    AlertComponent
   ],
   imports: [
+    QueryBuilderModule,
     ChartsModule,
     BrowserModule,
     AppRoutingModule,

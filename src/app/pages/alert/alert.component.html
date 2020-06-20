@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-end my-3">
+    <button class="mr-2" nz-button nzType="default" (click)="onIndexChange(0)">Mute</button>
+    <button nz-button nzType="primary" (click)="onIndexChange(2)">Take action</button>
+</div>
+<div nz-row nzGutter="16" nzJustify="center" class="align-items-stretch mb-3 d-flex">
+    <div nz-col nzSpan="9">
+        <nz-card nzBordered="false" class="shadow-sm mb-3">
+            <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
+            <div class="d-flex justify-content-end">
+                <a class="mb-0">
+                    View Rules
+                </a>
+            </div>
+        </nz-card>
+        <ng-template #extraTemplate>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <p class="text-capitalize mb-0">Temperature too high</p>
+                    <p class="ant-card-meta-description ng-star-inserted">
+                        Some Awesome description
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+        <nz-card nzBordered="false" class="shadow-sm">
+            <div class="my-4 d-flex justify-content-center">
+                <h1 class="h1 font-weight-normal" style="font-size: 48px">22
+                    <sup style="top: 10px;font-size: 12px;vertical-align: top;">
+                        Alerts
+                    </sup>
+                </h1>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a class="mb-0">
+                    View Actions
+                </a>
+            </div>
+        </nz-card>
+    </div>
+    <div nz-col nzSpan="15">
+        <nz-card nzBordered="false" class="shadow-sm py-4" style="height: 100%;">
+            <div class="my-4 d-flex justify-content-center">
+                <nz-timeline [nzPending]="'Recording...'" [nzReverse]="(false)" class="alert-timeline">
+                    <nz-timeline-item>
+                        <div class="timeline-content pb-0">
+                            <div *ngFor="let item of '1234'.split('')" class="shadow-sm mb-3 d-flex px-3 bg-grey py-3 w-100">
+                                <div class="text-muted pr-5"><b>Object.property</b></div>
+                                <div class="text-muted pr-5"><b>Equals</b></div>
+                                <div class="text-muted pr-5">value</div>
+                            </div>
+                        </div>
+                        <div class="text-right timeline-date">
+                            <p class="mb-0">
+                                2015-09-01
+                            </p>
+                            <p class="text-muted">
+                                10:20 PM
+                            </p>
+                        </div>
+                    </nz-timeline-item>
+                    <nz-timeline-item>
+                        <div class="timeline-content pb-0">
+                            <div *ngFor="let item of '12'.split('')" class="shadow-sm mb-3 d-flex px-3 bg-grey py-3 w-100">
+                                <div class="text-muted pr-5"><b>Object.property</b></div>
+                                <div class="text-muted pr-5"><b>Equals</b></div>
+                                <div class="text-muted pr-5">value</div>
+                            </div>
+                        </div>
+                        <div class="text-right timeline-date">
+                            <p class="mb-0">
+                                2015-09-01
+                            </p>
+                            <p class="text-muted">
+                                10:20 PM
+                            </p>
+                        </div>
+                    </nz-timeline-item>
+                    <nz-timeline-item>
+                        <div class="timeline-content pb-0">
+                            <div *ngFor="let item of '1'.split('')" class="shadow-sm mb-3 d-flex px-3 bg-grey py-3 w-100">
+                                <div class="text-muted pr-5"><b>Object.property</b></div>
+                                <div class="text-muted pr-5"><b>Equals</b></div>
+                                <div class="text-muted pr-5">value</div>
+                            </div>
+                        </div>
+                        <div class="text-right timeline-date">
+                            <p class="mb-0">
+                                2015-09-01
+                            </p>
+                            <p class="text-muted">
+                                10:20 PM
+                            </p>
+                        </div>
+                    </nz-timeline-item>
+                </nz-timeline>
+            </div>
+        </nz-card>
+    </div>
+</div>
