@@ -13,7 +13,8 @@
             <i nz-icon (click)="toggleView('grid')" class="mr-3 mb-0 pb-0" [nzTheme]="view==='grid'?'twotone':'outline'"
                 style="font-size: 24px;cursor: pointer;" nzType="appstore"></i>
 
-            <button nz-button [routerLink]="['/rule']" nzType="primary" [nzSize]="size"><i nz-icon nzType="plus"></i>Add Rule</button>
+            <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+                [nzSize]="size"><i nz-icon nzType="plus"></i>Add Role</button>
         </div>
     </div>
     <ng-template #suffixIconSearch>
@@ -22,22 +23,16 @@
 
     <div *ngIf="view==='grid'" class="mb-3">
         <div nz-row nzGutter="16">
-            <div nz-col nzSpan="6" class="mb-3" *ngFor="let rule of rules | async">
+            <div nz-col nzSpan="6" class="mb-3" *ngFor="let role of roles | async">
                 <nz-card nzHoverable nzBordered="false">
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
-                    <div class="my-3 d-flex justify-content-between">
-                        <button nz-button nzSize="small" nzType="default">{{rule.conditions}} Conditions</button>
-                        <div>
-                            <i class="ml-2" *ngIf="rule.emails>0" nz-icon nzType="mail"></i>
-                            <i class="ml-2" *ngIf="rule.smss>0" nz-icon nzType="message"></i>
-                            <i class="ml-2" *ngIf="rule.webhooks>0" nz-icon nzType="global"></i>
-
-                        </div>
+                    <div class="my-3">
+                        <button nz-button nzSize="small" nzType="default">{{role.users}} Users</button>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-0">
-                            <i nz-icon nzType="heart" [nzTheme]="rule.status==='active'?'twotone':'outline'"></i>
-                            {{rule.status}}
+                            <i nz-icon nzType="heart" [nzTheme]="role.message_rate>0?'twotone':'outline'"></i>
+                            {{role.status}}
                         </p>
                         <p class="mb-0">
                             5 min ago
@@ -47,10 +42,9 @@
                 <ng-template #extraTemplate>
                     <div class="d-flex justify-content-between">
                         <div>
-                            <p class="text-capitalize mb-0">{{rule.name}}</p>
-                            <p class="ant-card-meta-description text-capitalize ng-star-inserted"
-                                style="font-size:14px">
-                                {{rule.description}}
+                            <p class="text-capitalize mb-0">{{role.name}}</p>
+                            <p class="ant-card-meta-description ng-star-inserted" style="font-size:14px">
+                                {{role.description}}
                             </p>
                         </div>
                         <a nz-dropdown [nzDropdownMenu]="menu">
@@ -69,12 +63,12 @@
             </div>
         </div>
         <div class="d-flex justify-content-between mt-3">
-            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Rules</p>
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Roles</p>
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
     <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="rules | async" [nzShowPagination]="false">
+        <nz-table #borderedTable [nzData]="roles | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">
@@ -84,12 +78,6 @@
             <tbody>
                 <tr *ngFor="let data of borderedTable.data">
                     <td *ngFor="let column of columns">
-
-                        <div *ngIf="column.template==='message_rate'">
-                            <b>
-                                {{data[column.key]||0}}
-                            </b> msg/sec
-                        </div>
                         <div *ngIf="column.template==='action'">
                             <a><i nz-icon [nzType]=" 'eye' "></i></a>
                             <nz-divider nzType="vertical"></nz-divider>
@@ -115,9 +103,42 @@
             </tbody>
         </nz-table>
         <div class="d-flex justify-content-between mt-3">
-            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Rules</p>
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Roles</p>
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
 
     </div>
+
+
+    <ng-template #tplTitle>
+        <span>Add Role</span>
+    </ng-template>
+    <ng-template #tplContent>
+        <div class="mb-3">
+            <input class="mb-3" nz-input placeholder="Role name" />
+            <textarea rows="3" nz-input placeholder="Awesome Description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <h3>Permissions ({{permissions.length}})</h3>
+            <nz-tag [nzColor]="'blue'" *ngFor="let permission of permissions; let i = index" [nzMode]="'closeable'"
+                (nzAfterClose)="handlePermissionClose(permission)">
+                {{ slicePermissionName(permission) }}
+            </nz-tag>
+            <nz-tag [nzColor]="'blue'" *ngIf="!inputPermissionVisible" class="editable-tag" nzNoAnimation
+                (click)="showPermissionInput()">
+                <i nz-icon nzType="plus"></i> Add Permission
+            </nz-tag>
+            <input #inputElement nz-input nzSize="small" *ngIf="inputPermissionVisible" type="text"
+                [(ngModel)]="inputPermissionValue" style="width: 78px;" (blur)="handlePermissionInputConfirm()"
+                (keydown.enter)="handlePermissionInputConfirm()" />
+        </div>
+
+
+    </ng-template>
+    <ng-template #tplFooter>
+        <button nz-button nzType="primary" (click)="destroyTplModal()" [nzLoading]="tplModalButtonLoading">
+            Add
+        </button>
+    </ng-template>
 </div>

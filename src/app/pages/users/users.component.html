@@ -13,7 +13,8 @@
             <i nz-icon (click)="toggleView('grid')" class="mr-3 mb-0 pb-0" [nzTheme]="view==='grid'?'twotone':'outline'"
                 style="font-size: 24px;cursor: pointer;" nzType="appstore"></i>
 
-            <button nz-button [routerLink]="['/rule']" nzType="primary" [nzSize]="size"><i nz-icon nzType="plus"></i>Add Rule</button>
+            <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)"
+                [nzSize]="size"><i nz-icon nzType="plus"></i>Add User</button>
         </div>
     </div>
     <ng-template #suffixIconSearch>
@@ -22,35 +23,40 @@
 
     <div *ngIf="view==='grid'" class="mb-3">
         <div nz-row nzGutter="16">
-            <div nz-col nzSpan="6" class="mb-3" *ngFor="let rule of rules | async">
-                <nz-card nzHoverable nzBordered="false">
+            <div nz-col nzSpan="6" class="mb-3" *ngFor="let user of users | async">
+                <nz-card nzHoverable [nzCover]="coverTemplate">
+                    <div class="d-flex justify-content-center">
+                        <nz-avatar class="shadow-sm mx-auto" style="margin-top:-120px" [nzSize]="128" nzIcon="user"
+                            nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                        </nz-avatar>
+                    </div>
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
-                    <div class="my-3 d-flex justify-content-between">
-                        <button nz-button nzSize="small" nzType="default">{{rule.conditions}} Conditions</button>
-                        <div>
-                            <i class="ml-2" *ngIf="rule.emails>0" nz-icon nzType="mail"></i>
-                            <i class="ml-2" *ngIf="rule.smss>0" nz-icon nzType="message"></i>
-                            <i class="ml-2" *ngIf="rule.webhooks>0" nz-icon nzType="global"></i>
-
-                        </div>
+                    <div class="my-3">
+                        <button nz-button nzSize="small" class="text-capitalize" nzType="default">{{user.role}}</button>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <p class="mb-0">
-                            <i nz-icon nzType="heart" [nzTheme]="rule.status==='active'?'twotone':'outline'"></i>
-                            {{rule.status}}
+                        <p class="mb-0 text-capitalize">
+                            <i nz-icon nzType="check-circle" [nzTheme]="'fill'"></i>
+                            {{user.status}}
                         </p>
                         <p class="mb-0">
                             5 min ago
                         </p>
                     </div>
                 </nz-card>
+                <ng-template #coverTemplate>
+                    <img style="height:140px" src="../../../assets/images/bg.jpg" alt="">
+                    <img style="height:140px" *ngIf="user.cover_image" alt="example" [src]="user.image" />
+                </ng-template>
                 <ng-template #extraTemplate>
                     <div class="d-flex justify-content-between">
                         <div>
-                            <p class="text-capitalize mb-0">{{rule.name}}</p>
+                            <p class="text-capitalize mb-0">
+                                {{user.firstName}}
+                            </p>
                             <p class="ant-card-meta-description text-capitalize ng-star-inserted"
                                 style="font-size:14px">
-                                {{rule.description}}
+                                {{user.lastName}}
                             </p>
                         </div>
                         <a nz-dropdown [nzDropdownMenu]="menu">
@@ -69,12 +75,12 @@
             </div>
         </div>
         <div class="d-flex justify-content-between mt-3">
-            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Rules</p>
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Users</p>
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
     <div *ngIf="view==='list'" class="mb-3">
-        <nz-table #borderedTable [nzData]="rules | async" [nzShowPagination]="false">
+        <nz-table #borderedTable [nzData]="users | async" [nzShowPagination]="false">
             <thead>
                 <tr>
                     <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">
@@ -115,9 +121,74 @@
             </tbody>
         </nz-table>
         <div class="d-flex justify-content-between mt-3">
-            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Rules</p>
+            <p>Showing <b>1</b> to <b>8</b> of <b>8</b> Users</p>
             <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
 
     </div>
+
+
+    <ng-template #tplTitle>
+        <span>Add User</span>
+    </ng-template>
+    <ng-template #tplContent>
+        <div class="mb-3 profile-upload">
+            <img style="height:140px;width: 100%" src="../../../assets/images/bg.jpg" alt="">
+            <div class="d-flex justify-content-center">
+                <div style="margin-top:-50px">
+                    <nz-upload style="border-radius: 50%" nzAction="https://jsonplaceholder.typicode.com/posts/"
+                        nzListType="picture-card" [(nzFileList)]="fileList" [nzShowButton]="fileList.length < 1"
+                        [nzShowUploadList]="showUploadList" [nzPreview]="handlePreview">
+                        <i nz-icon nzType="plus"></i>
+                        <div class="ant-upload-text">Picture</div>
+                    </nz-upload>
+                    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null"
+                        (nzOnCancel)="previewVisible = false">
+                        <ng-template #modalContent>
+                            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                        </ng-template>
+                    </nz-modal>
+                </div>
+            </div>
+        </div>
+        <div class="upload">
+        </div>
+        <div nz-row nzGutter="16">
+            <div nz-col nzSpan="12">
+
+                <input class="mb-3" nz-input placeholder="First name" />
+            </div>
+            <div nz-col nzSpan="12">
+
+                <input class="mb-3" nz-input placeholder="Last name" />
+            </div>
+            <div nz-col nzSpan="24">
+
+                <input class="mb-3" nz-input placeholder="email" />
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <h3>Roles ({{roles.length}})</h3>
+            <nz-tag [nzColor]="'blue'" *ngFor="let role of roles; let i = index" [nzMode]="'closeable'"
+                (nzAfterClose)="handleRoleClose(role)">
+                {{ sliceRoleName(role) }}
+            </nz-tag>
+            <nz-tag [nzColor]="'blue'" *ngIf="!inputRoleVisible" class="editable-tag" nzNoAnimation
+                (click)="showRoleInput()">
+                <i nz-icon nzType="plus"></i> Add Role
+            </nz-tag>
+            <input #inputElement nz-input nzSize="small" *ngIf="inputRoleVisible" type="text"
+                [(ngModel)]="inputRoleValue" style="width: 78px;" (blur)="handleRoleInputConfirm()"
+                (keydown.enter)="handleRoleInputConfirm()" />
+        </div>
+
+
+    </ng-template>
+    <ng-template #tplFooter>
+        <button nz-button nzType="primary" (click)="destroyTplModal()" [nzLoading]="tplModalButtonLoading">
+            Add
+        </button>
+    </ng-template>
 </div>

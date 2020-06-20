@@ -3620,3 +3620,7 @@
   .alert-timeline .ant-timeline-item-content{
     top:-20px
 }
+
+.profile-upload .ant-upload{
+  border-radius: 50%
+}

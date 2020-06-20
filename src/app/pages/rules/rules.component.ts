@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { Rule } from 'src/app/core/models';
+
+import { JsonEditorComponent, JsonEditorOptions } from 'ang-jsoneditor';
+
 const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
@@ -19,7 +22,19 @@ export class RulesComponent implements OnInit {
   columns = columns
   view: string = 'grid'
 
-  constructor() { }
+
+  public editorOptions: JsonEditorOptions;
+  public data: any;
+  @ViewChild(JsonEditorComponent, { static: false }) editor: JsonEditorComponent;
+
+  constructor() {
+    this.editorOptions = new JsonEditorOptions()
+    this.editorOptions.modes = ['code', 'text', 'tree', 'view']; // set all allowed modes
+    //this.options.mode = 'code'; //set only one mode
+
+    this.data = { "products": [{ "name": "car", "product": [{ "name": "honda", "model": [{ "id": "civic", "name": "civic" }, { "id": "accord", "name": "accord" }, { "id": "crv", "name": "crv" }, { "id": "pilot", "name": "pilot" }, { "id": "odyssey", "name": "odyssey" }] }] }] }
+
+  }
 
   ngOnInit() {
     this.rules = from([[
@@ -27,8 +42,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 1',
         description: 'Awesome decription',
         emails: 12,
-        smss:0,
-        webhooks:6,
+        smss: 0,
+        webhooks: 6,
         conditions: 5,
         status: 'active',
       },
@@ -36,8 +51,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 2',
         description: 'Awesome decription',
         emails: 2,
-        smss:5,
-        webhooks:6,
+        smss: 5,
+        webhooks: 6,
         conditions: 7,
         status: 'active',
       },
@@ -45,8 +60,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 3',
         description: 'Awesome decription',
         emails: 0,
-        smss:5,
-        webhooks:6,
+        smss: 5,
+        webhooks: 6,
         conditions: 8,
         status: 'active',
       },
@@ -54,8 +69,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 4',
         description: 'Awesome decription',
         emails: 0,
-        smss:5,
-        webhooks:0,
+        smss: 5,
+        webhooks: 0,
         conditions: 15,
         status: 'active',
       },
@@ -63,8 +78,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 5',
         description: 'Awesome decription',
         emails: 4,
-        smss:5,
-        webhooks:6,
+        smss: 5,
+        webhooks: 6,
         conditions: 9,
         status: 'active',
       },
@@ -72,8 +87,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 6',
         description: 'Awesome decription',
         emails: 0,
-        smss:0,
-        webhooks:0,
+        smss: 0,
+        webhooks: 0,
         conditions: 5,
         status: 'active',
       },
@@ -81,8 +96,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 7',
         description: 'Awesome decription',
         emails: 23,
-        smss:5,
-        webhooks:6,
+        smss: 5,
+        webhooks: 6,
         conditions: 5,
         status: 'active',
       },
@@ -90,8 +105,8 @@ export class RulesComponent implements OnInit {
         name: 'Rule - 8',
         description: 'Awesome decription',
         emails: 31,
-        smss:5,
-        webhooks:0,
+        smss: 5,
+        webhooks: 0,
         conditions: 5,
         status: 'active',
       },

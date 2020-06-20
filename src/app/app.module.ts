@@ -18,6 +18,11 @@ import { RulesComponent } from './pages/rules/rules.component';
 import { RuleComponent } from './pages/rule/rule.component';
 import { AlertsComponent } from './pages/alerts/alerts.component';
 import { AlertComponent } from './pages/alert/alert.component';
+import { RolesComponent } from './pages/roles/roles.component';
+import { NgJsonSchema } from 'ng-jsonschema';
+import { NgJsonEditorModule } from 'ang-jsoneditor';
+import { FormatComponent } from './pages/format/format.component';
+import { UsersComponent } from './pages/users/users.component' 
 registerLocaleData(en);
 
 @NgModule({
@@ -29,9 +34,14 @@ registerLocaleData(en);
     RulesComponent,
     RuleComponent,
     AlertsComponent,
-    AlertComponent
+    AlertComponent,
+    RolesComponent,
+    FormatComponent,
+    UsersComponent
   ],
   imports: [
+    NgJsonEditorModule,
+    NgJsonSchema,
     QueryBuilderModule,
     ChartsModule,
     BrowserModule,

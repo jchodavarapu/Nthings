@@ -35,3 +35,18 @@ export interface Alert {
     alerts: number;
     status: string;
 }
+export interface Role {
+    name: string;
+    description: string;
+    users: number;
+    status: string;
+}
+export interface User {
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: string;
+    status: string;
+    cover_image?: string;
+    profile_image?: string;
+}
