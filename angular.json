@@ -29,7 +29,9 @@
               }
             ],
             "styles": [
+              "./node_modules/jsoneditor/dist/jsoneditor.min.css",
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/assets/fonts/proxima.css",
               "src/styles.css"
             ],
             "scripts": []
