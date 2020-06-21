@@ -24,7 +24,7 @@ export class AlertsComponent implements OnInit {
     this.alerts = from([[
       {
         name: 'Temperature is too high',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 12,
         smss: 0,
         webhooks: 6,
@@ -33,7 +33,7 @@ export class AlertsComponent implements OnInit {
       },
       {
         name: 'RPM is too high',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 2,
         smss: 5,
         webhooks: 6,
@@ -42,7 +42,7 @@ export class AlertsComponent implements OnInit {
       },
       {
         name: 'Temperature is too low',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 0,
         smss: 5,
         webhooks: 6,
@@ -51,7 +51,7 @@ export class AlertsComponent implements OnInit {
       },
       {
         name: 'Cooling is required',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 0,
         smss: 5,
         webhooks: 0,

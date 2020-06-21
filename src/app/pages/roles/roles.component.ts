@@ -6,7 +6,7 @@ const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
   { key: 'users', title: 'users', width: '100px' },
-  { key: 'status', title: 'status', width: '100px',template: 'status'},
+  { key: 'status', title: 'status', width: '100px', template: 'status' },
   { key: 'id', title: 'Actions', width: '100px', template: 'action' },
 ]
 const colrsDict = {
@@ -53,49 +53,49 @@ export class RolesComponent implements OnInit {
     this.roles = from([[
       {
         name: 'Admin',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 5,
         status: 'active',
       },
       {
         name: 'Operator',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 7,
         status: 'inactive',
       },
       {
         name: 'Maintainer',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 8,
         status: 'active',
       },
       {
         name: 'Default',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 15,
         status: 'inactive',
       },
       {
         name: 'Manager',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 9,
         status: 'inactive',
       },
       {
         name: 'Custom role',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 5,
         status: 'active',
       },
       {
         name: 'Default role',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 5,
         status: 'active',
       },
       {
         name: 'Superadmin',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         users: 5,
         status: 'active',
       },

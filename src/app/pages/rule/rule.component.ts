@@ -62,7 +62,7 @@ export class RuleComponent implements OnInit {
     this.devices = from([[
       {
         name: 'temperature sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 12,
         image: 'https://cdn1-shop.mikroe.com/img/product/lm35-sensor/lm35-sensor-thickbox_default-12x.jpg',
         channels: 5,
@@ -70,7 +70,7 @@ export class RuleComponent implements OnInit {
       },
       {
         name: 'proximity sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 2,
         image: 'https://images-na.ssl-images-amazon.com/images/I/411Vi6amGwL._SX342_.jpg',
         channels: 7,
@@ -78,7 +78,7 @@ export class RuleComponent implements OnInit {
       },
       {
         name: 'gas sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 0,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSiehiZ3U6AjfBlr8N7FqPoOgXAPsE3lJJSWXYxI1mmCaB1780V&usqp=CAU',
         channels: 8,
@@ -86,7 +86,7 @@ export class RuleComponent implements OnInit {
       },
       {
         name: 'humidity sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 1,
         image: null,
         channels: 15,

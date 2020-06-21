@@ -54,7 +54,7 @@ export class RulesComponent implements OnInit {
     this.rules = from([[
       {
         name: 'Rule - 1',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 12,
         smss: 0,
         webhooks: 6,
@@ -63,7 +63,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 2',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 2,
         smss: 5,
         webhooks: 6,
@@ -72,7 +72,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 3',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 0,
         smss: 5,
         webhooks: 6,
@@ -81,7 +81,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 4',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 0,
         smss: 5,
         webhooks: 0,
@@ -90,7 +90,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 5',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 4,
         smss: 5,
         webhooks: 6,
@@ -99,7 +99,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 6',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 0,
         smss: 0,
         webhooks: 0,
@@ -108,7 +108,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 7',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 23,
         smss: 5,
         webhooks: 6,
@@ -117,7 +117,7 @@ export class RulesComponent implements OnInit {
       },
       {
         name: 'Rule - 8',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         emails: 31,
         smss: 5,
         webhooks: 0,

@@ -72,7 +72,7 @@ export class DevicesComponent implements OnInit {
     this.devices = from([[
       {
         name: 'temperature sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 12,
         image: 'https://cdn1-shop.mikroe.com/img/product/lm35-sensor/lm35-sensor-thickbox_default-12x.jpg',
         channels: 5,
@@ -80,7 +80,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'proximity sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 2,
         image: 'https://images-na.ssl-images-amazon.com/images/I/411Vi6amGwL._SX342_.jpg',
         channels: 7,
@@ -88,7 +88,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'gas sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 0,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSiehiZ3U6AjfBlr8N7FqPoOgXAPsE3lJJSWXYxI1mmCaB1780V&usqp=CAU',
         channels: 8,
@@ -96,7 +96,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'humidity sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 1,
         image: null,
         channels: 15,
@@ -104,7 +104,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'humidity sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 4,
         image: 'https://foxlabstore.com/wp-content/uploads/2019/01/DHT11-Temprature-and-Humidity-Sensor-Module-main.jpg',
         channels: 9,
@@ -112,7 +112,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'color sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 0,
         image: 'https://5.imimg.com/data5/DK/PR/MY-47838441/tcs-3200-color-sensor-500x500.jpg',
         channels: 5,
@@ -120,7 +120,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'ir sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 23,
         image: 'https://i0.wp.com/www.nuttyengineer.com/wp-content/uploads/2016/10/IR-sensor.jpg?fit=800%2C800&ssl=1',
         channels: 5,
@@ -128,7 +128,7 @@ export class DevicesComponent implements OnInit {
       },
       {
         name: 'smoke sensor',
-        description: 'Awesome decription',
+        description: 'Awesome description',
         message_rate: 31,
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZ8vW40OPUw92VvL21T927hYZoR55cK6E3y2sO0j9yhpjOvJDL&usqp=CAU',
         channels: 5,
