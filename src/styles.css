@@ -3664,3 +3664,34 @@
 .shadow,.shadow-sm{
   border-radius: 6px
 }
+
+.ant-menu-item:focus,.ant-menu-submenu-title:focus{
+  outline:0px
+}
+
+.ant-menu-dark .ant-menu-item-selected .anticon, .ant-menu-dark .ant-menu-item-selected .anticon+span, .ant-menu-dark .ant-menu-item-selected>a, .ant-menu-dark .ant-menu-item-selected>a:hover{
+  color:#FD9600 
+}
+
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected, .ant-menu.ant-menu-dark .ant-menu-item-selected{
+  background-color: transparent
+}
+
+body {
+  font-family:'proxima_novaregular';
+}
+.ant-menu-item .anticon+span, .ant-menu-submenu-title .anticon+span,
+.ant-menu-dark .ant-menu-item, .ant-menu-dark .ant-menu-item-group-title, .ant-menu-dark .ant-menu-item>a,
+.ant-breadcrumb,.ant-breadcrumb .ant-breadcrumb-link{
+  font-family:proxima_novasemibold;
+  text-transform: uppercase
+}
+.ant-breadcrumb a:hover{
+  color:inherit
+}
+.proxima_novabold{font-family:proxima_novabol}
+.proxima_novaextrabold{font-family:proxima_novaextrabol}
+.proxima_novaregular{font-family:proxima_novaregula}
+.proxima_novalight{font-family:proxima_novaligh}
+.proxima_novasemibold{font-family:proxima_novasemibol}
+@import "./assets/fonts/proxima.css"
