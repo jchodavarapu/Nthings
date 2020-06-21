@@ -26,8 +26,8 @@
             <div nz-col nzSpan="6" class="mb-3" *ngFor="let user of users | async">
                 <nz-card nzHoverable [nzCover]="coverTemplate">
                     <div class="d-flex justify-content-center">
-                        <nz-avatar class="shadow mx-auto" style="margin-top:-135px" [nzSize]="128" nzIcon="user"
-                            nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+                        <nz-avatar class="shadow mx-auto" style="margin-top:-135px;border-radius:50%" [nzSize]="128"
+                            nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
                         </nz-avatar>
                     </div>
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
