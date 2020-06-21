@@ -3656,3 +3656,11 @@
   margin-left:-24px;
   margin-right:-24px
 }
+
+.ant-card {
+  border-radius: 6px
+}
+
+.shadow,.shadow-sm{
+  border-radius: 6px
+}

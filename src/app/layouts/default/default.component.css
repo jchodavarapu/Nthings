@@ -75,10 +75,11 @@
   
   .inner-content-white-bg {
     background: #fff;
+    border-radius: 6px
   }
   .inner-content {
     padding: 24px;
-    margin-bottom: 24px
+    margin-bottom: 24px;
     /* min-height: 100%; */
   }
   
