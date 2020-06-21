@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import {PrettyJsonModule} from 'angular2-prettyjson';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { DevicesComponent } from './pages/devices/devices.component';
@@ -28,7 +29,8 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { ForgotComponent } from './pages/forgot/forgot.component' 
+import { ForgotComponent } from './pages/forgot/forgot.component';
+import { FormatCodePipe } from './pipes/format-code.pipe' 
 registerLocaleData(en);
 
 @NgModule({
@@ -49,9 +51,11 @@ registerLocaleData(en);
     AuthComponent,
     SigninComponent,
     SignupComponent,
-    ForgotComponent
+    ForgotComponent,
+    FormatCodePipe
   ],
   imports: [
+    PrettyJsonModule,
     NgJsonEditorModule,
     NgJsonSchema,
     QueryBuilderModule,

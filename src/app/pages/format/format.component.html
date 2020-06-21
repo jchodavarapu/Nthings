@@ -1,4 +1,15 @@
-<section class="mb-5">
-
-    <ng-jsonschema [models]="models"></ng-jsonschema>
+<section class="mb-0 pb-0" style="height: calc(100vh - (64px + 48px + 55px))">
+    <div nz-row nzGutter="16" style="height:100%">
+        <div nz-col nzSpan="12" style="height: 100%;">
+            <div class="shadow h-100 p-3 bg-white" style="overflow:scroll">
+                <ng-jsonschema style="height:100%" [(models)]="models"></ng-jsonschema>
+                <!-- <json-editor [options]="makeOptions()" [data]="prd" (change)="showJson($event)"></json-editor> -->
+            </div>
+        </div>
+        <div nz-col nzSpan="12" style="height: 100%;">
+            <div class="shadow h-100 px-3 pt-3 pb-4 bg-white">
+                <prettyjson class="mb-2" style="height:100%" [obj]="models[0]"></prettyjson>
+            </div>
+        </div>
+    </div>
 </section>

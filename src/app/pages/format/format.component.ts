@@ -23,8 +23,8 @@ export class FormatComponent implements OnInit {
   ngOnInit(): void {
     this.models = [
       {
-        'name': 'User',
-        'nameSpace': 'user',
+        'name': 'Format',
+        'nameSpace': 'format',
         'data': {
           'type': ['object'],
           'properties': {
@@ -33,37 +33,7 @@ export class FormatComponent implements OnInit {
             }
           }
         }
-      },
-      {
-        'name': 'Address',
-        'nameSpace': 'address',
-        'data': {
-          'type': ['object']
-        }
-      },
-      {
-        'name': 'Person',
-        'nameSpace': 'person',
-        'data': {
-          'type': 'object',
-          'properties': {
-            'name': {
-              'type': 'string',
-              'minLength': 3,
-              'maxLength': 255
-            },
-            'age': {
-              'type': 'integer',
-              'minimum': 18
-            }
-          },
-          'required': [
-            'name',
-            'age'
-          ]
-        }
       }
-
     ];
 
     this.schema = this.models[0];
