@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./format.component.css']
 })
 export class FormatComponent implements OnInit {
-  models: any
+  models;
+  schema;
+  data;
+
   constructor() { }
 
   addWhitebg() {
@@ -17,9 +20,20 @@ export class FormatComponent implements OnInit {
     document.getElementById('inner-content').className = "inner-content"
     return true
   }
-  ngOnInit() {
-
+  ngOnInit(): void {
     this.models = [
+      {
+        'name': 'User',
+        'nameSpace': 'user',
+        'data': {
+          'type': ['object'],
+          'properties': {
+            'name': {
+              'type': ['string']
+            }
+          }
+        }
+      },
       {
         'name': 'Address',
         'nameSpace': 'address',
@@ -51,6 +65,8 @@ export class FormatComponent implements OnInit {
       }
 
     ];
+
+    this.schema = this.models[0];
   }
 
 }
