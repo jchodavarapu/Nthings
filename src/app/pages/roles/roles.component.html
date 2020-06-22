@@ -1,5 +1,5 @@
 <div>
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-3" [style.padding]="(view==='grid') ? '0px':'12px 12px 0px 12px'">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
                 <input type="text" nz-input placeholder="Search" />
@@ -28,8 +28,8 @@
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3">
                         <div
-                            class="px-3 py-1 bg-button-grey color-orange proxima_novaextrabold shadow-sm d-inline-block">
-                            <b>
+                            class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                            <b class="proxima_novaextrabold">
                                 {{role.users}}
                             </b>
                             Users</div>
@@ -81,7 +81,7 @@
             <nz-pagination [nzPageIndex]="3" [nzTotal]="8" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3">
+    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3" style="padding: 24px;">
         <nz-table class="full-stretch-table" #borderedTable [nzData]="roles | async" [nzShowPagination]="false">
             <thead>
                 <tr>

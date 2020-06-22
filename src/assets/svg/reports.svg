@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24">
+  <g id="analysis_1_" data-name="analysis (1)" transform="translate(-2)">
+    <path id="Path_295" data-name="Path 295" d="M19.5,24H4.5A2.5,2.5,0,0,1,2,21.5V2.5A2.5,2.5,0,0,1,4.5,0h15A2.5,2.5,0,0,1,22,2.5v19A2.5,2.5,0,0,1,19.5,24ZM4.5,1A1.5,1.5,0,0,0,3,2.5v19A1.5,1.5,0,0,0,4.5,23h15A1.5,1.5,0,0,0,21,21.5V2.5A1.5,1.5,0,0,0,19.5,1Z" fill="#95a5b8"/>
+    <path id="Path_296" data-name="Path 296" d="M18.5,12h-2a.5.5,0,0,1,0-1h2a.5.5,0,0,1,0,1Z" fill="#95a5b8"/>
+    <path id="Path_297" data-name="Path 297" d="M18.5,9h-2a.5.5,0,0,1,0-1h2a.5.5,0,0,1,0,1Z" fill="#95a5b8"/>
+    <path id="Path_298" data-name="Path 298" d="M18.5,15h-2a.5.5,0,0,1,0-1h2a.5.5,0,0,1,0,1Z" fill="#95a5b8"/>
+    <path id="Path_299" data-name="Path 299" d="M18.5,18h-2a.5.5,0,0,1,0-1h2a.5.5,0,0,1,0,1Z" fill="#95a5b8"/>
+    <path id="Path_300" data-name="Path 300" d="M18.5,21H5.5a.5.5,0,0,1,0-1h13a.5.5,0,0,1,0,1Z" fill="#95a5b8"/>
+    <path id="Path_301" data-name="Path 301" d="M10,18a5,5,0,1,1,5-5A5.006,5.006,0,0,1,10,18Zm0-9a4,4,0,1,0,4,4A4,4,0,0,0,10,9Z" fill="#95a5b8"/>
+    <path id="Path_302" data-name="Path 302" d="M6.818,16.682a.5.5,0,0,1-.354-.853L9.5,12.793V8.5a.5.5,0,0,1,1,0V13a.5.5,0,0,1-.146.354L7.172,16.536A.5.5,0,0,1,6.818,16.682Z" fill="#95a5b8"/>
+  </g>
+</svg>
