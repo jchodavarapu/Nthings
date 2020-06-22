@@ -4,27 +4,36 @@
 <div>
     <form nz-form class="login-form">
         <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your username!">
+            <nz-form-control>
                 <nz-input-group>
-                        <label>
-                                <input required>
-                                <span class="placeholder">Email</span>
-                            </label>
+                    <label>
+                        <input [(ngModel)]="email" name="email" required>
+                        <span class="placeholder">Email
+                            <span class="pl-2 text-danger" *ngIf="errors.email">
+                                - {{errors.email}}
+                            </span>
+                        </span>
+                    </label>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-form-control>
                 <nz-input-group>
-                        <label>
-                                <input required type="password">
-                                <span class="placeholder">Password</span>
-                            </label>
+                    <label>
+                        <input [(ngModel)]="password" name="password" required type="password">
+                        <span class="placeholder">Password
+                            <span class="pl-2 text-danger" *ngIf="errors.password">
+                                - {{errors.password}}
+                            </span>
+                        </span>
+                    </label>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
         <div>
-            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">SIGN IN</button>
+            <button nz-button nzSize="large" [disabled]="[email,password].includes('')" nzBlock
+                (click)="signIn(email,password)" [nzType]="[email,password].includes('')?'':'primary'">SIGN IN</button>
         </div>
         <div class="login-form-forgot">
             <a [routerLink]="['/auth/forgot-password']">Forgot password</a>

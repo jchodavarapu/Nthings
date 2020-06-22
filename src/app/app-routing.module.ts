@@ -16,12 +16,14 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotComponent } from './pages/forgot/forgot.component'
 import { DefaultComponent } from './layouts/default/default.component';
 import { AuthComponent } from './layouts/auth/auth.component';
+import { AuthGuard } from "./auth.guard"
 
 const routes: Routes = [
   // { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
   {
     path: '',
     component: DefaultComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', data: { breadcrumb: 'dashboard' }, component: DashboardComponent, pathMatch: 'full' },

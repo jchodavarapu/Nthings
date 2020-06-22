@@ -188,7 +188,8 @@ form {
   .ant-input-group input:valid,
   .ant-input-group textarea:focus,
   .ant-input-group textarea:valid {
-    border-bottom: 2px solid orange;
+    /* border-bottom: 2px solid orange; */
+    border-bottom: 2px solid #1890ff;
   }
   .ant-input-group input:focus + .placeholder,
   .ant-input-group input:valid + .placeholder,
@@ -197,6 +198,6 @@ form {
     top: 0;
     cursor: inherit;
     font-size: 14px;
-    color: orange;
+    color: #1890ff;
   }
   
