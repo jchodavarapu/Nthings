@@ -2,8 +2,8 @@
     <div *ngIf="stats | async as statsArr; else loading" style="width: 100%;">
         <div nz-col *ngFor="let item of statsArr" nzSpan="4">
             <nz-card nzHoverable class="text-center proxima_novalight">
-                <div class="text-grey text-uppercase">{{item.key}}</div>
-                <h1 class="h1 font-weight-normal mt-3 mb-0 pb-0">{{item.value}}</h1>
+                <div class="text-grey text-uppercase" style="font-size: 16px;">{{item.key}}</div>
+                <h1 class="h1 font-weight-normal mt-3 mb-0 pb-0" style="color: #5F6D81;font-size: 48px;">{{item.value}}</h1>
             </nz-card>
         </div>
     </div>
@@ -18,21 +18,21 @@
     </ng-template>
 </div>
 <div nz-row nzGutter="16" nzType="flex" nzJustify="around" nzAlign="stretch" class="mb-3 proxima_novalight">
-    <div nz-col nzXs="12">
+    <div nz-col nzXs="16">
         <nz-card nz-col class="mb-3" [nzBordered]="false">
-            <canvas baseChart [width]="400" [height]="200" [datasets]="lineChartData" [labels]="lineChartLabels"
+            <canvas baseChart width="400" height="100" [datasets]="lineChartData" [labels]="lineChartLabels"
                 [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
                 [chartType]="lineChartType" [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
         </nz-card>
         <nz-card nz-col [nzBordered]="false">
-            <canvas baseChart width="400" height="200" [datasets]="lineChartData2" [labels]="lineChartLabels2"
+            <canvas baseChart width="400" height="100" [datasets]="lineChartData2" [labels]="lineChartLabels2"
                 [options]="lineChartOptions2" [colors]="lineChartColors2" [legend]="lineChartLegend2"
                 [chartType]="lineChartType2" [plugins]="lineChartPlugins2" (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
         </nz-card>
     </div>
-    <div nz-col nzXs="12">
+    <div nz-col nzXs="8">
         <nz-card nzBordered="false" style="height:100%;width:100%;">
             <nz-card-meta nzTitle="Activity" class="proxima_novalight"></nz-card-meta>
             <div class="mt-4">

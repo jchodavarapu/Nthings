@@ -5,15 +5,39 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
+  .menu-icon {
+    font-size: 20px;
+  }
+  .menu-icon:hover, .menu-icon:hover svg, .ant-menu-item:hover, .ant-menu-item-selected {
+    color: #FD9600;
+  }
+
   .app-layout {
     height: 100vh;
+  }
+  
+  .ant-breadcrumb-link a {
+    color: black;
   }
   
   .menu-sidebar {
     position: relative;
     z-index: 10;
     min-height: 100vh;
-    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+    background: #142443;
+  }
+
+  .ant-menu-sub {
+    background: #142443;
+  }
+  
+  .sidebar-logo, .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+    background: #142443 !important;
+
+  }
+  .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+    background: #142443 !important;
+
   }
   
   .header-trigger {
