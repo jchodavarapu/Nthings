@@ -3656,8 +3656,8 @@
 } */
 
 .full-stretch-table {
-  margin-left:-24px;
-  margin-right:-24px
+  /* margin-left:-24px;
+  margin-right:-24px */
 }
 
 .ant-card {
@@ -4427,4 +4427,7 @@ prettyjson pre{
   background: #142443;
   color: white;
   font-weight: bold;
+}
+.pagination-color {
+color:#666666;
 }

@@ -1,5 +1,7 @@
 <div>
-    <div class="d-flex justify-content-between align-items-center mb-3" [style.padding]="(view==='grid') ? '0px':'12px 12px 0px 12px'">
+    <div class="d-flex justify-content-between align-items-center mb-3"
+        [style.padding]="(view==='grid') ? '0px':'12px 12px 0px 12px'"
+        [style.padding]="(view==='grid') ? '0px':'12px 12px 0px 12px'">
         <div nz-col nzSpan="5">
             <nz-input-group [nzSuffix]="suffixIconSearch" nzSize='large'>
                 <input type="text" nz-input placeholder="Search" />
@@ -27,8 +29,7 @@
                 <nz-card nzHoverable nzBordered="false">
                     <nz-card-meta [nzTitle]="extraTemplate"></nz-card-meta>
                     <div class="my-3 d-flex justify-content-between">
-                        <div
-                            class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
+                        <div class="px-3 py-1 bg-button-grey color-orange shadow-sm d-inline-block">
                             <b class="proxima_novaextrabold">
                                 {{format.channels}}
                             </b>
@@ -83,12 +84,14 @@
 
             </div>
         </div>
-        <div class="d-flex justify-content-between mt-3">
-            <p class="proxima_novabold">Showing <b>1</b> to <b>8</b> of <b>8</b> Formats</p>
-            <nz-pagination [nzPageIndex]="3" [nzTotal]="8" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
+        <div class="d-flex justify-content-between py-3 align-items-center">
+            <p class="pagination-color pl-3 mb-0">Showing <b class="proxima_novabold">1</b> to <b
+                    class="proxima_novabold">8</b> of <b>8</b> Formats</p>
+            <nz-pagination [nzPageIndex]="3" [nzTotal]="8" nzShowSizeChanger [nzPageSize]="10">
+            </nz-pagination>
         </div>
     </div>
-    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3" style="padding: 24px;">
+    <div *ngIf="view==='list'&&addWhitebg()" class="mb-3">
         <nz-table class="full-stretch-table" #borderedTable [nzData]="formats | async" [nzShowPagination]="false">
             <thead>
                 <tr>
@@ -132,9 +135,11 @@
                 </tr>
             </tbody>
         </nz-table>
-        <div class="d-flex justify-content-between mt-3">
-            <p class="proxima_novabold">Showing <b>1</b> to <b>8</b> of <b>8</b> Formats</p>
-            <nz-pagination [nzPageIndex]="3" [nzTotal]="8" nzShowSizeChanger [nzPageSize]="10"></nz-pagination>
+        <div class="d-flex justify-content-between py-3 align-items-center">
+            <p class="pagination-color pl-3 mb-0">Showing <b class="proxima_novabold">1</b> to <b
+                    class="proxima_novabold">8</b> of <b>8</b> Formats</p>
+            <nz-pagination [nzPageIndex]="3" [nzTotal]="8" nzShowSizeChanger [nzPageSize]="10">
+            </nz-pagination>
         </div>
 
     </div>

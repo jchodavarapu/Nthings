@@ -8,7 +8,7 @@
   .menu-icon {
     font-size: 20px;
   }
-  .menu-icon:hover, .menu-icon:hover svg, .ant-menu-item:hover, .ant-menu-item-selected {
+  .menu-icon:hover, .menu-icon:hover svg, .ant-menu-item:hover, .ant-menu-item-selected, .active.ant-menu-item {
     color: #FD9600;
   }
 

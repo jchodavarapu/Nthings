@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,7 @@ export class SigninComponent implements OnInit {
   password: string = ''
   errors: { email: string, password: string } = { email: '', password: '' }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private message: NzMessageService) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class SigninComponent implements OnInit {
     let passwords = ['Welcome@123']
     if (emails.includes(email) && passwords.includes(password)) {
       this.errors = { email: '', password: '' }
+      this.message.create('success', 'Welcome');
       localStorage.setItem('token', 'loggedin')
       this.router.navigate(['dashboard'])
     }

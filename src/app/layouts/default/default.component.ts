@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultComponent implements OnInit {
   isCollapsed = false;
 
+  constructor(private router: Router) { }
   addWhitebg() {
     document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
     return true
@@ -17,4 +19,9 @@ export class DefaultComponent implements OnInit {
     return true
   }
   ngOnInit() { }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(["/auth/signin"]);
+
+  }
 }
