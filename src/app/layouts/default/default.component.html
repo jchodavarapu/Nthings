@@ -151,11 +151,10 @@
                 <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
                     <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
                 </span>
-                <nz-breadcrumb style="display: inline;text-transform: capitalize;padding-bottom: 5px"
-                    [nzAutoGenerate]="true">
-                </nz-breadcrumb>
             </div>
         </nz-header>
+        <nz-breadcrumb style="display: inline;text-transform: capitalize;padding-bottom: 5px" [nzAutoGenerate]="true">
+        </nz-breadcrumb>
         <nz-content>
             <div class="inner-content" id="inner-content">
                 <router-outlet></router-outlet>
