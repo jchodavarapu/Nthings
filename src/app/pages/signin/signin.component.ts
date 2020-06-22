@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   }
 
   signIn(email, password) {
-    let emails = ['partha.konda@nividit.com', 'balamurali.panadranki']
+    let emails = ['partha.konda@nividit.com', 'balamurali.panadranki@nividit.com', 'admin@nividit.com']
     let passwords = ['Welcome@123']
     if (emails.includes(email) && passwords.includes(password)) {
       this.errors = { email: '', password: '' }
