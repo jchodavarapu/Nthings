@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class DefaultComponent implements OnInit {
   isCollapsed = false;
 
-  constructor(private router: Router) { }
+  constructor(public router: Router) { }
   addWhitebg() {
     document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
     return true

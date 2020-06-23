@@ -1,5 +1,3 @@
-@import "~jsoneditor/dist/jsoneditor.min.css";
-
 input[type="checkbox"].small:after {
     width: 12px;
     height: 12px;

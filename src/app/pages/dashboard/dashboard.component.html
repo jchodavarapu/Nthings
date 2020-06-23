@@ -3,7 +3,8 @@
         <div nz-col *ngFor="let item of statsArr" nzSpan="4">
             <nz-card nzHoverable class="text-center proxima_novalight">
                 <div class="text-grey text-uppercase" style="font-size: 16px;">{{item.key}}</div>
-                <h1 class="h1 font-weight-normal mt-3 mb-0 pb-0" style="color: #5F6D81;font-size: 48px;">{{item.value}}</h1>
+                <h1 class="h1 font-weight-normal mt-3 mb-0 pb-0" style="color: #5F6D81;font-size: 48px;">{{item.value}}
+                </h1>
             </nz-card>
         </div>
     </div>
@@ -22,14 +23,12 @@
         <nz-card nz-col class="mb-3" [nzBordered]="false">
             <canvas baseChart width="400" height="100" [datasets]="lineChartData" [labels]="lineChartLabels"
                 [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
-                [chartType]="lineChartType" [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+                [chartType]="lineChartType" [plugins]="lineChartPlugins"></canvas>
         </nz-card>
         <nz-card nz-col [nzBordered]="false">
             <canvas baseChart width="400" height="100" [datasets]="lineChartData2" [labels]="lineChartLabels2"
                 [options]="lineChartOptions2" [colors]="lineChartColors2" [legend]="lineChartLegend2"
-                [chartType]="lineChartType2" [plugins]="lineChartPlugins2" (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
+                [chartType]="lineChartType2" [plugins]="lineChartPlugins2"></canvas>
         </nz-card>
     </div>
     <div nz-col nzXs="8">
