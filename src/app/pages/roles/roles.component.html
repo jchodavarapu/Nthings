@@ -142,18 +142,21 @@
         </div>
 
         <div class="mb-3">
-            <h3>Permissions ({{permissions.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let permission of permissions; let i = index" [nzMode]="'closeable'"
-                (nzAfterClose)="handlePermissionClose(permission)">
+            <label>Permissions ({{permissions.length}})</label>
+            <br>
+            <nz-tag class="my-2 default-tag" *ngFor="let permission of permissions; let i = index"
+                [nzMode]="'closeable'" (nzAfterClose)="handlePermissionClose(permission)">
                 {{ slicePermissionName(permission) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputPermissionVisible" class="editable-tag" nzNoAnimation
+            <nz-tag *ngIf="!inputPermissionVisible" class="my-2 nobg-add-tag" nzNoAnimation
                 (click)="showPermissionInput()">
                 <i nz-icon nzType="plus"></i> Add Permission
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputPermissionVisible" type="text"
-                [(ngModel)]="inputPermissionValue" style="width: 78px;" (blur)="handlePermissionInputConfirm()"
-                (keydown.enter)="handlePermissionInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputPermissionVisible" type="text"
+                (input)="onPermissionInput($event)" [(ngModel)]="inputPermissionValue" style="width: 100px;"
+                (blur)="handlePermissionInputConfirm()" (keydown.enter)="handlePermissionInputConfirm()"
+                [nzAutocomplete]="auto" />
+            <nz-autocomplete [nzDataSource]="filteredPermissionOptions" nzBackfill #auto></nz-autocomplete>
         </div>
 
 

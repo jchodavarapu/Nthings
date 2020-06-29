@@ -4431,3 +4431,22 @@ prettyjson pre{
 .pagination-color {
 color:#666666;
 }
+.default-tag{
+  background-color:#F2F3F5;border:1px solid #DFE3E6;
+  color:#FD9600
+}
+.default-tag i svg{
+color:inherit;
+color:#FD9600
+}
+
+.nobg-add-tag{
+  background-color:#fff;
+  border:0px solid #DFE3E6;
+  color:#3480FD;
+  cursor: pointer;
+}
+.nobg-add-tag i svg{
+color:inherit;
+color:#3480FD
+}

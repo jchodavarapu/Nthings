@@ -36,6 +36,12 @@ export class RolesComponent implements OnInit {
   inputPermissionVisible = false;
   inputPermissionValue = '';
 
+  userOptions = ["john doe", "jane doe", "mary doe", "john wick", "martin king", "will smith", "lil wayn", "anna dominic"]
+  filteredUserOptions = []
+
+  permissionOptions = ['Permission 1', 'Permission 2'];
+  filteredPermissionOptions = []
+
   @ViewChild('inputElement', { static: false }) inputElement: ElementRef;
 
 
@@ -146,10 +152,24 @@ export class RolesComponent implements OnInit {
   }
 
   handlePermissionInputConfirm(): void {
-    if (this.inputPermissionValue && this.permissions.indexOf(this.inputPermissionValue) === -1) {
+    if (this.inputPermissionValue && this.permissionOptions.includes(this.inputPermissionValue) && this.permissions.indexOf(this.inputPermissionValue) === -1) {
       this.permissions = [...this.permissions, this.inputPermissionValue];
     }
     this.inputPermissionValue = '';
     this.inputPermissionVisible = false;
   }
+
+  onUserInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredUserOptions =
+        this.userOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.users.includes(option));
+  }
+  onPermissionInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredPermissionOptions =
+        this.permissionOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.permissions.includes(option));
+  }
+
 }

@@ -190,17 +190,17 @@
 
         <div class="mb-3">
             <h3>Roles ({{roles.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let role of roles; let i = index" [nzMode]="'closeable'"
+            <nz-tag class="my-2 default-tag" *ngFor="let role of roles; let i = index" [nzMode]="'closeable'"
                 (nzAfterClose)="handleRoleClose(role)">
                 {{ sliceRoleName(role) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputRoleVisible" class="editable-tag" nzNoAnimation
-                (click)="showRoleInput()">
+            <nz-tag *ngIf="!inputRoleVisible" class="my-2 nobg-add-tag" nzNoAnimation (click)="showRoleInput()">
                 <i nz-icon nzType="plus"></i> Add Role
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputRoleVisible" type="text"
-                [(ngModel)]="inputRoleValue" style="width: 78px;" (blur)="handleRoleInputConfirm()"
-                (keydown.enter)="handleRoleInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputRoleVisible" type="text"
+                (input)="onRoleInput($event)" [(ngModel)]="inputRoleValue" style="width: 100px;"
+                (blur)="handleRoleInputConfirm()" (keydown.enter)="handleRoleInputConfirm()" [nzAutocomplete]="auto" />
+            <nz-autocomplete [nzDataSource]="filteredRoleOptions" nzBackfill #auto></nz-autocomplete>
         </div>
 
 

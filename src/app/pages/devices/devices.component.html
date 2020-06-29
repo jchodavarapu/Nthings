@@ -166,33 +166,38 @@
         </div>
 
         <div class="mb-3">
-            <h3>Channels ({{channels.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let channel of channels; let i = index" [nzMode]="'closeable'"
+            <label>Channels ({{channels.length}})</label>
+            <br>
+            <nz-tag class="my-2 default-tag" *ngFor="let channel of channels; let i = index" [nzMode]="'closeable'"
                 (nzAfterClose)="handleChannelClose(channel)">
                 {{ sliceChannelName(channel) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputChannelVisible" class="editable-tag" nzNoAnimation
-                (click)="showChannelInput()">
+            <nz-tag class="my-2 nobg-add-tag" *ngIf="!inputChannelVisible" nzNoAnimation (click)="showChannelInput()">
                 <i nz-icon nzType="plus"></i> Add Channel
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputChannelVisible" type="text"
-                [(ngModel)]="inputChannelValue" style="width: 78px;" (blur)="handleChannelInputConfirm()"
-                (keydown.enter)="handleChannelInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputChannelVisible" type="text"
+                (input)="onChannelInput($event)" [(ngModel)]="inputChannelValue" style="width: 100px;"
+                (blur)="handleChannelInputConfirm()" (keydown.enter)="handleChannelInputConfirm()"
+                [nzAutocomplete]="auto" />
+            <nz-autocomplete [nzDataSource]="filteredChannelOptions" nzBackfill #auto></nz-autocomplete>
         </div>
 
         <div class="mb-3">
-            <h3>Filters ({{filters.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let filter of filters; let i = index" [nzMode]="'closeable'"
-                (nzAfterClose)="handleFilterClose(filter)">
-                {{ sliceFilterName(filter) }}
+            <label>Formats ({{formats.length}})</label>
+            <br>
+            <nz-tag class="my-2 default-tag" *ngFor="let filter of formats; let i = index" [nzMode]="'closeable'"
+                (nzAfterClose)="handleFormatClose(filter)">
+                {{ sliceFormatName(filter) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputFilterVisible" class="editable-tag" nzNoAnimation
-                (click)="showFilterInput()">
-                <i nz-icon nzType="plus"></i> Add Filter
+            <nz-tag class="my-2 nobg-add-tag" *ngIf="!inputFormatVisible" nzNoAnimation (click)="showFormatInput()">
+                <i nz-icon nzType="plus"></i> Add Format
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputFilterVisible" type="text"
-                [(ngModel)]="inputFilterValue" style="width: 78px;" (blur)="handleFilterInputConfirm()"
-                (keydown.enter)="handleFilterInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputFormatVisible" type="text"
+                (input)="onFormatInput($event)" [(ngModel)]="inputFormatValue" style="width: 100px;"
+                (blur)="handleFormatInputConfirm()" (keydown.enter)="handleFormatInputConfirm()"
+                [nzAutocomplete]="autoFormat" />
+            <nz-autocomplete [nzDataSource]="filteredFormatOptions" nzBackfill #autoFormat></nz-autocomplete>
+
         </div>
 
 

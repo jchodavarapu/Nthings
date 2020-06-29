@@ -141,33 +141,37 @@
         </div>
 
         <div class="mb-3">
-            <h3>Devices ({{devices.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let device of devices; let i = index" [nzMode]="'closeable'"
+            <label>Devices ({{devices.length}})</label>
+            <br>
+            <nz-tag class="my-2 default-tag" *ngFor="let device of devices; let i = index" [nzMode]="'closeable'"
                 (nzAfterClose)="handleDeviceClose(device)">
                 {{ sliceDeviceName(device) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputDeviceVisible" class="editable-tag" nzNoAnimation
-                (click)="showDeviceInput()">
+            <nz-tag *ngIf="!inputDeviceVisible" class="my-2 nobg-add-tag" nzNoAnimation (click)="showDeviceInput()">
                 <i nz-icon nzType="plus"></i> Add Device
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputDeviceVisible" type="text"
-                [(ngModel)]="inputDeviceValue" style="width: 78px;" (blur)="handleDeviceInputConfirm()"
-                (keydown.enter)="handleDeviceInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputDeviceVisible" type="text"
+                (input)="onDeviceInput($event)" [(ngModel)]="inputDeviceValue" style="width: 78px;"
+                (blur)="handleDeviceInputConfirm()" (keydown.enter)="handleDeviceInputConfirm()"
+                [nzAutocomplete]="autoDevice" />
+            <nz-autocomplete [nzDataSource]="filteredDeviceOptions" nzBackfill #autoDevice></nz-autocomplete>
         </div>
 
         <div class="mb-3">
-            <h3>Filters ({{filters.length}})</h3>
-            <nz-tag [nzColor]="'blue'" *ngFor="let filter of filters; let i = index" [nzMode]="'closeable'"
+            <label>Filters ({{filters.length}})</label>
+            <br>
+            <nz-tag class="my-2 default-tag" *ngFor="let filter of filters; let i = index" [nzMode]="'closeable'"
                 (nzAfterClose)="handleFilterClose(filter)">
                 {{ sliceFilterName(filter) }}
             </nz-tag>
-            <nz-tag [nzColor]="'blue'" *ngIf="!inputFilterVisible" class="editable-tag" nzNoAnimation
-                (click)="showFilterInput()">
+            <nz-tag *ngIf="!inputFilterVisible" class="my-2 nobg-add-tag" nzNoAnimation (click)="showFilterInput()">
                 <i nz-icon nzType="plus"></i> Add Filter
             </nz-tag>
-            <input #inputElement nz-input nzSize="small" *ngIf="inputFilterVisible" type="text"
-                [(ngModel)]="inputFilterValue" style="width: 78px;" (blur)="handleFilterInputConfirm()"
-                (keydown.enter)="handleFilterInputConfirm()" />
+            <input class="my-2" #inputElement nz-input nzSize="small" *ngIf="inputFilterVisible" type="text"
+                (input)="onFilterInput($event)" [(ngModel)]="inputFilterValue" style="width: 78px;"
+                (blur)="handleFilterInputConfirm()" (keydown.enter)="handleFilterInputConfirm()"
+                [nzAutocomplete]="auto" />
+            <nz-autocomplete [nzDataSource]="filteredFilterOptions" nzBackfill #auto></nz-autocomplete>
         </div>
 
 

@@ -48,9 +48,12 @@ export class UsersComponent implements OnInit {
   previewVisible = false;
 
 
-  roles = ['Role 1', 'Role 2'];
+  roles = ["Admin", "Operator"];
   inputRoleVisible = false;
   inputRoleValue = '';
+
+  roleOptions = ["Admin", "Operator", "Maintainer", "Default", "Manager", "Custom role", "Default role", "Superadmin"]
+  filteredRoleOptions = []
 
   @ViewChild('inputElement', { static: false }) inputElement: ElementRef;
 
@@ -191,9 +194,14 @@ export class UsersComponent implements OnInit {
       this.inputElement.nativeElement.focus();
     }, 10);
   }
-
+  onRoleInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredRoleOptions =
+        this.roleOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.roles.includes(option));
+  }
   handleRoleInputConfirm(): void {
-    if (this.inputRoleValue && this.roles.indexOf(this.inputRoleValue) === -1) {
+    if (this.inputRoleValue && this.roleOptions.includes(this.inputRoleValue) && this.roles.indexOf(this.inputRoleValue) === -1) {
       this.roles = [...this.roles, this.inputRoleValue];
     }
     this.inputRoleValue = '';

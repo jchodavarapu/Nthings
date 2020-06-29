@@ -47,19 +47,35 @@ export class DevicesComponent implements OnInit {
   previewVisible = false;
 
 
-  channels = ['Channel 1', 'Channel 2'];
+  channels = ['Channel - 1', 'Channel - 2'];
   inputChannelVisible = false;
   inputChannelValue = '';
 
-  filters = ['Filter 1', 'Filter 2'];
-  inputFilterVisible = false;
-  inputFilterValue = '';
+  formats = ['Format - 1', 'Format - 2'];
+  inputFormatVisible = false;
+  inputFormatValue = '';
 
+  channelOptions = ["Channel - 1", "Channel - 2", "Channel - 3", "Channel - 4", "Channel - 5", "Channel - 6", "Channel - 7", "Channel - 8"]
+  filteredChannelOptions = []
+
+  formatOptions = ["Format - 1", "Format - 2", "Format - 3", "Format - 4", "Format - 5", "Format - 6", "Format - 7", "Format - 8"]
+  filteredFormatOptions = []
   @ViewChild('inputElement', { static: false }) inputElement: ElementRef;
 
 
   constructor(private modalService: NzModalService) { }
-
+  onChannelInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredChannelOptions =
+        this.channelOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.channels.includes(option));
+  }
+  onFormatInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredFormatOptions =
+        this.formatOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.formats.includes(option));
+  }
   addWhitebg() {
     document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
     return true
@@ -188,7 +204,7 @@ export class DevicesComponent implements OnInit {
   }
 
   handleChannelInputConfirm(): void {
-    if (this.inputChannelValue && this.channels.indexOf(this.inputChannelValue) === -1) {
+    if (this.inputChannelValue && this.channelOptions.includes(this.inputChannelValue) && this.channels.indexOf(this.inputChannelValue) === -1) {
       this.channels = [...this.channels, this.inputChannelValue];
     }
     this.inputChannelValue = '';
@@ -196,27 +212,27 @@ export class DevicesComponent implements OnInit {
   }
 
 
-  handleFilterClose(removedTag: {}): void {
-    this.filters = this.filters.filter(tag => tag !== removedTag);
+  handleFormatClose(removedTag: {}): void {
+    this.formats = this.formats.filter(tag => tag !== removedTag);
   }
 
-  sliceFilterName(tag: string): string {
+  sliceFormatName(tag: string): string {
     const isLongTag = tag.length > 20;
     return isLongTag ? `${tag.slice(0, 20)}...` : tag;
   }
 
-  showFilterInput(): void {
-    this.inputFilterVisible = true;
+  showFormatInput(): void {
+    this.inputFormatVisible = true;
     setTimeout(() => {
       this.inputElement.nativeElement.focus();
     }, 10);
   }
 
-  handleFilterInputConfirm(): void {
-    if (this.inputFilterValue && this.filters.indexOf(this.inputFilterValue) === -1) {
-      this.filters = [...this.filters, this.inputFilterValue];
+  handleFormatInputConfirm(): void {
+    if (this.inputFormatValue && this.formatOptions.includes(this.inputFormatValue) && this.formats.indexOf(this.inputFormatValue) === -1) {
+      this.formats = [...this.formats, this.inputFormatValue];
     }
-    this.inputFilterValue = '';
-    this.inputFilterVisible = false;
+    this.inputFormatValue = '';
+    this.inputFormatVisible = false;
   }
 }

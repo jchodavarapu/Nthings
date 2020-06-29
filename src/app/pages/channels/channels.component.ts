@@ -29,14 +29,19 @@ export class ChannelsComponent implements OnInit {
   tplModalButtonLoading: boolean = false;
 
 
-  devices = ['Device 1', 'Device 2'];
+  devices = ["temperature sensor", "proximity sensor",];
   inputDeviceVisible = false;
   inputDeviceValue = '';
 
-  filters = ['Filter 1', 'Filter 2'];
+  filters = ['Filter - 1', 'Filter - 2'];
   inputFilterVisible = false;
   inputFilterValue = '';
 
+  deviceOptions = ["temperature sensor", "proximity sensor", "gas sensor", "humidity sensor", "humidity sensor", "color sensor", "ir sensor", "smoke sensor"]
+  filteredDeviceOptions = []
+
+  filterOptions = ["Filter - 1", "Filter - 2", "Filter - 3", "Filter - 4", "Filter - 5", "Filter - 6", "Filter - 7", "Filter - 8"]
+  filteredFilterOptions = []
   @ViewChild('inputElement', { static: false }) inputElement: ElementRef;
 
 
@@ -137,6 +142,18 @@ export class ChannelsComponent implements OnInit {
       this.tplModal.destroy();
     }, 1000);
   }
+  onDeviceInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredDeviceOptions =
+        this.deviceOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.devices.includes(option));
+  }
+  onFilterInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    if (value)
+      this.filteredFilterOptions =
+        this.filterOptions.filter(option => (option.toLowerCase().indexOf(value.toLowerCase()) !== -1) && !this.filters.includes(option));
+  }
 
   handleDeviceClose(removedTag: {}): void {
     this.devices = this.devices.filter(tag => tag !== removedTag);
@@ -155,7 +172,7 @@ export class ChannelsComponent implements OnInit {
   }
 
   handleDeviceInputConfirm(): void {
-    if (this.inputDeviceValue && this.devices.indexOf(this.inputDeviceValue) === -1) {
+    if (this.inputDeviceValue && this.deviceOptions.includes(this.inputDeviceValue) && this.devices.indexOf(this.inputDeviceValue) === -1) {
       this.devices = [...this.devices, this.inputDeviceValue];
     }
     this.inputDeviceValue = '';
@@ -180,7 +197,7 @@ export class ChannelsComponent implements OnInit {
   }
 
   handleFilterInputConfirm(): void {
-    if (this.inputFilterValue && this.filters.indexOf(this.inputFilterValue) === -1) {
+    if (this.inputFilterValue && this.filterOptions.includes(this.inputFilterValue) && this.filters.indexOf(this.inputFilterValue) === -1) {
       this.filters = [...this.filters, this.inputFilterValue];
     }
     this.inputFilterValue = '';

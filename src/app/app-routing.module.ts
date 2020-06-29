@@ -33,10 +33,10 @@ const routes: Routes = [
       { path: 'rule', data: { breadcrumb: 'rule' }, component: RuleComponent, pathMatch: 'full' },
       { path: 'alerts', data: { breadcrumb: 'alerts' }, component: AlertsComponent, pathMatch: 'full' },
       { path: 'alert', data: { breadcrumb: 'alert' }, component: AlertComponent, pathMatch: 'full' },
-      { path: 'roles', data: { breadcrumb: 'confifure / roles' }, component: RolesComponent, pathMatch: 'full' },
-      { path: 'users', data: { breadcrumb: 'confifure / users' }, component: UsersComponent, pathMatch: 'full' },
-      { path: 'format', data: { breadcrumb: 'confifure / format' }, component: FormatComponent, pathMatch: 'full' },
-      { path: 'formats', data: { breadcrumb: 'confifure / formats' }, component: FormatsComponent, pathMatch: 'full' },
+      { path: 'roles', data: { breadcrumb: 'configure / roles' }, component: RolesComponent, pathMatch: 'full' },
+      { path: 'users', data: { breadcrumb: 'configure / users' }, component: UsersComponent, pathMatch: 'full' },
+      { path: 'format', data: { breadcrumb: 'configure / format' }, component: FormatComponent, pathMatch: 'full' },
+      { path: 'formats', data: { breadcrumb: 'configure / formats' }, component: FormatsComponent, pathMatch: 'full' },
     ]
   },
   {

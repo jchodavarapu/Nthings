@@ -52,7 +52,7 @@
                 <span style="display: inline-block;padding-left: 10px;position: relative;top: -5px;">.</span>
                 <span style="display: inline-block;padding-left: 10px;">Channels</span>
             </li>
-            <li nz-menu-item nzMatchRouter [routerLink]="['/rules']">
+            <li nz-menu-item nzMatchRouter [routerLink]="['/rules']" [class.active]="['/rule'].includes(router.url)">
                 <i nz-icon class="menu-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 22 22">
                         <g id="document" transform="translate(0 -19.652)">
@@ -110,7 +110,7 @@
                 </i>
                 <span>Rules</span>
             </li>
-            <li nz-menu-item nzMatchRouter [routerLink]="['/alerts']">
+            <li nz-menu-item nzMatchRouter [routerLink]="['/alerts']" [class.active]="['/alert'].includes(router.url)">
                 <i nz-icon class="menu-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24">
                         <g id="alarm" transform="translate(-46.973 -30)">
