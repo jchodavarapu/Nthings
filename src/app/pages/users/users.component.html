@@ -189,7 +189,8 @@
 
 
         <div class="mb-3">
-            <h3>Roles ({{roles.length}})</h3>
+            <label>Roles ({{roles.length}})</label>
+            <br>
             <nz-tag class="my-2 default-tag" *ngFor="let role of roles; let i = index" [nzMode]="'closeable'"
                 (nzAfterClose)="handleRoleClose(role)">
                 {{ sliceRoleName(role) }}
