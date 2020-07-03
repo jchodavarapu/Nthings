@@ -31,7 +31,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotComponent } from './pages/forgot/forgot.component';
 import { FormatCodePipe } from './pipes/format-code.pipe';
-import { ProfileComponent } from './pages/profile/profile.component' 
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DeviceComponent } from './pages/device/device.component' 
 registerLocaleData(en);
 
 @NgModule({
@@ -54,7 +55,8 @@ registerLocaleData(en);
     SignupComponent,
     ForgotComponent,
     FormatCodePipe,
-    ProfileComponent
+    ProfileComponent,
+    DeviceComponent
   ],
   imports: [
     PrettyJsonModule,

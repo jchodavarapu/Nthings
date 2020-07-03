@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DevicesComponent } from './pages/devices/devices.component';
+import { DeviceComponent } from './pages/device/device.component';
 import { ChannelsComponent } from './pages/channels/channels.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { RuleComponent } from './pages/rule/rule.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', data: { breadcrumb: 'dashboard' }, component: DashboardComponent, pathMatch: 'full' },
       { path: 'devices', data: { breadcrumb: 'things / devices' }, component: DevicesComponent, pathMatch: 'full' },
+      { path: 'device', data: { breadcrumb: 'things / device' }, component: DeviceComponent, pathMatch: 'full' },
       { path: 'channels', data: { breadcrumb: 'things / channels' }, component: ChannelsComponent, pathMatch: 'full' },
       { path: 'rules', data: { breadcrumb: 'rules' }, component: RulesComponent, pathMatch: 'full' },
       { path: 'rule', data: { breadcrumb: 'rule' }, component: RuleComponent, pathMatch: 'full' },

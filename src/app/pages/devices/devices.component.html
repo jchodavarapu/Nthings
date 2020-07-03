@@ -69,7 +69,7 @@
                     </div>
                     <nz-dropdown-menu #menu="nzDropdownMenu">
                         <ul nz-menu nzSelectable>
-                            <li nz-menu-item>View</li>
+                            <li [routerLink]="['/device']" nz-menu-item>View</li>
                             <li nz-menu-item>Edit</li>
                             <li nz-menu-item>Delete</li>
                         </ul>
@@ -103,7 +103,7 @@
                             </b> msg/sec
                         </div>
                         <div *ngIf="column.template==='action'">
-                            <a><i nz-icon [nzType]=" 'eye' "></i></a>
+                            <a [routerLink]="['/device']"><i nz-icon [nzType]=" 'eye' "></i></a>
                             <nz-divider nzType="vertical"></nz-divider>
                             <a><i nz-icon [nzType]=" 'edit' "></i></a>
                             <nz-divider nzType="vertical"></nz-divider>
