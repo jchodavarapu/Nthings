@@ -1,0 +1,153 @@
+<nz-card style="min-height: calc(100vh - 94px)">
+    <div class="d-flex justify-content-between mb-3">
+        <button nz-button nzType="default" [routerLink]="['/channels']">
+            <div class="d-flex align-items-center">
+                <i nz-icon class="mr-2" nzType="arrow-left"></i>Back
+            </div>
+        </button>
+        <div>
+            <button nz-button nzType="link"
+                (click)="createTplConnectionModal(tplConnectionTitle, tplConnectionContent, tplConnectionFooter)">
+                <div class="d-flex align-items-center">
+                    <i nz-icon class="mr-2" nzType="info-circle"></i>View Connections
+                </div>
+            </button>
+            <button nz-button nzType="default" (click)="createTplRunModal(tplRunTitle, tplRunContent, tplRunFooter)">
+                <div class="d-flex align-items-center">
+                    <i nz-icon class="mr-2 color-green" nzType="caret-right" nzTheme="fill"></i>
+                    Run Command
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="d-flex w-100 align-items-center">
+        <!-- <div style="width:200px">
+            <img style="width:100%" [src]="channel.image" alt="">
+        </div> -->
+        <div class="w-100">
+            <h3 class="text-capitalize">{{channel.name}}</h3>
+            <p class="text-muted">
+                {{channel.description}}
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repudiandae, adipisci id odit
+                corporis, eligendi earum ipsa tempore delectus vero atque obcaecati fugit nihil quibusdam laboriosam
+                minima architecto illum incidunt.
+                <br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repudiandae, adipisci id odit
+                corporis, eligendi earum ipsa tempore delectus vero atque obcaecati fugit nihil quibusdam laboriosam
+                minima architecto illum incidunt.
+                <br>
+            </p>
+            <div class="d-flex justify-content-between mt-5">
+                <div class="d-flex align-items-center">
+                    <div class="px-3 py-1 mr-3 bg-button-grey color-orange shadow-sm d-inline-block">
+                        <b class="proxima_novaextrabold">
+                            {{channel.devices}}
+                        </b>
+                        Devices</div>
+                    <p class="mb-0">
+                        <i nz-icon nzType="heart" [ngClass]="{'color-green': channel.message_rate>0}"
+                            [nzTheme]="channel.message_rate>0?'fill':'outline'"></i>
+                        {{channel.message_rate}} msg/sec
+                    </p>
+                </div>
+                <p class="mb-0">
+                    5 min ago
+                </p>
+            </div>
+        </div>
+    </div>
+    <h3 class="mt-5">
+        Devices
+    </h3>
+    <div class="mt-5">
+        <nz-table class="full-stretch-table" #borderedTable [nzData]="devices | async" [nzShowPagination]="false">
+            <thead>
+                <tr>
+                    <th *ngFor="let column of columns" [nzWidth]="column.width" class="text-capitalize" nzLeft="0px">
+                        {{column.title}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of borderedTable.data">
+                    <td *ngFor="let column of columns">
+
+                        <div *ngIf="column.template==='message_rate'">
+                            <b class="proxima_novabold">
+                                {{data[column.key]||0}}
+                            </b> msg/sec
+                        </div>
+                        <div *ngIf="column.template==='status'">
+                            <nz-tag class="text-capitalize" [nzColor]="colrsDict[data[column.key]]">
+                                {{data[column.key]}}
+                            </nz-tag>
+                        </div>
+                        <div *ngIf="column.template==='action'">
+                            <a><i nz-icon [nzType]=" 'eye' "></i></a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a><i nz-icon [nzType]=" 'edit' "></i></a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a><i nz-icon [nzType]=" 'delete' "></i></a>
+                        </div>
+                        <div *ngIf="column.template==='image'">
+                            <div *ngIf="data[column.key]; else noImage">
+                                <img [src]="data[column.key]" style="height:32px" alt="">
+                            </div>
+                            <ng-template #noImage>
+                                <i nz-icon [nzType]=" 'file' "></i> NA
+                            </ng-template>
+                        </div>
+
+
+                        <div *ngIf="!column.template">
+                            {{data[column.key]}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</nz-card>
+
+
+<ng-template #tplRunTitle>
+    <span>Run Commmand</span>
+</ng-template>
+<ng-template #tplRunContent>
+    <div class="d-flex align-items-center mb-3">
+        <div class="w-100">
+            <textarea class="w-100" rows="3" nz-input placeholder="Command"></textarea>
+        </div>
+    </div>
+</ng-template>
+<ng-template #tplRunFooter>
+    <button nz-button nzType="link" (click)="destroyTplRunModal('cancel')">
+        Cancel
+    </button>
+    <button nz-button nzType="primary" (click)="destroyTplRunModal()" [nzLoading]="tplRunModalButtonLoading">
+        <div class="d-flex align-items-center">
+            <i *ngIf="!tplRunModalButtonLoading" nz-icon class="mr-2 color-green" nzType="caret-right"
+                nzTheme="fill"></i>
+            Run Command
+        </div>
+    </button>
+</ng-template>
+
+<ng-template #tplConnectionTitle>
+    <span>Connection details</span>
+</ng-template>
+<ng-template #tplConnectionContent>
+    <div class="mb-3">
+        <h3>End points</h3>
+        <ul>
+            <li>https://nconnect.com/d123</li>
+            <li>https://nconnect.com/dx123</li>
+            <li>https://nconnect.com/d1v823</li>
+        </ul>
+    </div>
+</ng-template>
+<ng-template #tplConnectionFooter>
+    <button nz-button nzType="link" (click)="destroyTplConnectionModal('cancel')">
+        Close
+    </button>
+</ng-template>

@@ -10,11 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import {PrettyJsonModule} from 'angular2-prettyjson';
+import { PrettyJsonModule } from 'angular2-prettyjson';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { DevicesComponent } from './pages/devices/devices.component';
 import { ChannelsComponent } from './pages/channels/channels.component';
+import { ChannelComponent } from './pages/channel/channel.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { RuleComponent } from './pages/rule/rule.component';
 import { AlertsComponent } from './pages/alerts/alerts.component';
@@ -32,7 +33,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotComponent } from './pages/forgot/forgot.component';
 import { FormatCodePipe } from './pipes/format-code.pipe';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { DeviceComponent } from './pages/device/device.component' 
+import { DeviceComponent } from './pages/device/device.component'
 registerLocaleData(en);
 
 @NgModule({
@@ -41,6 +42,7 @@ registerLocaleData(en);
     DashboardComponent,
     DevicesComponent,
     ChannelsComponent,
+    ChannelComponent,
     RulesComponent,
     RuleComponent,
     AlertsComponent,

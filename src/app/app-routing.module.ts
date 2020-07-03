@@ -4,6 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DevicesComponent } from './pages/devices/devices.component';
 import { DeviceComponent } from './pages/device/device.component';
 import { ChannelsComponent } from './pages/channels/channels.component';
+import { ChannelComponent } from './pages/channel/channel.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { RuleComponent } from './pages/rule/rule.component';
 import { AlertComponent } from './pages/alert/alert.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'devices', data: { breadcrumb: 'things / devices' }, component: DevicesComponent, pathMatch: 'full' },
       { path: 'device', data: { breadcrumb: 'things / device' }, component: DeviceComponent, pathMatch: 'full' },
       { path: 'channels', data: { breadcrumb: 'things / channels' }, component: ChannelsComponent, pathMatch: 'full' },
+      { path: 'channel', data: { breadcrumb: 'things / channel' }, component: ChannelComponent, pathMatch: 'full' },
       { path: 'rules', data: { breadcrumb: 'rules' }, component: RulesComponent, pathMatch: 'full' },
       { path: 'rule', data: { breadcrumb: 'rule' }, component: RuleComponent, pathMatch: 'full' },
       { path: 'alerts', data: { breadcrumb: 'alerts' }, component: AlertsComponent, pathMatch: 'full' },
