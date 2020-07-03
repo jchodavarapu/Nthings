@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class DefaultComponent implements OnInit {
   isCollapsed = false;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private message: NzMessageService) { }
   addWhitebg() {
     document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
     return true
@@ -21,6 +22,7 @@ export class DefaultComponent implements OnInit {
   ngOnInit() { }
   logout() {
     localStorage.clear();
+    this.message.create('success', 'Logged out');
     this.router.navigate(["/auth/signin"]);
 
   }
