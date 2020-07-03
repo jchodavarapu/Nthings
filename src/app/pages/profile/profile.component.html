@@ -1,0 +1,95 @@
+<nz-card>
+    <div class="px-5 py-5">
+        <nz-tabset [nzTabPosition]="'left'" [(nzSelectedIndex)]="selectedIndex">
+            <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.name">
+                <nz-spin [nzSpinning]="userLoading">
+                    <div class="main" *ngIf="user">
+                        <div class="left">
+                            <form nz-form nzLayout="vertical" se-container="1">
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>Name</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <input nz-input [(ngModel)]="user.name" name="name" required />
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>Email</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <input nz-input type="email" [(ngModel)]="user.email" name="email" required />
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>About</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <textarea nz-input [(ngModel)]="user.about" name="about"
+                                            [nzAutosize]="{ minRows: 4, maxRows: 10 }" placeholder="About"></textarea>
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>Country</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <nz-select [(ngModel)]="user.country" name="country" required>
+                                            <nz-option nzLabel="India" nzValue="India"></nz-option>
+                                        </nz-select>
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <div class="d-flex">
+                                    <nz-form-item class="mb-0 w-100">
+                                        <nz-form-label [nzXs]="24" nzRequired>State/Province</nz-form-label>
+                                        <nz-form-control [nzXs]="24">
+                                            <nz-select [(ngModel)]="user.state" name="state" required
+                                                class="width-50 mr-sm">
+                                                <nz-option nzLabel="Andhra pradesh" nzValue="Andhra pradesh">
+                                                </nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                    <nz-form-item class="mb-0 w-100">
+                                        <nz-form-label [nzXs]="24" nzRequired>City</nz-form-label>
+                                        <nz-form-control [nzXs]="24">
+
+                                            <nz-select [(ngModel)]="user.city" name="city" required class="width-50">
+                                                <nz-option nzLabel="Vijayawada" nzValue="Vijayawada"></nz-option>
+                                            </nz-select>
+                                        </nz-form-control>
+                                    </nz-form-item>
+                                </div>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>Address</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <input nz-input [(ngModel)]="user.address" name="address" required />
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-label [nzXs]="24" nzRequired>Phone</nz-form-label>
+                                    <nz-form-control [nzXs]="24">
+                                        <input nz-input [(ngModel)]="user.phone" name="phone" required />
+                                    </nz-form-control>
+                                </nz-form-item>
+                                <nz-form-item class="mb-0">
+                                    <nz-form-control [nzXs]="24">
+                                        <button nz-button nzType="primary">Save</button>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </form>
+                        </div>
+                        <div class="right">
+                            <div class="avatar_title">Avatar</div>
+                            <div class="avatar">
+                                <img src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png"
+                                    alt="Avatar" />
+                            </div>
+                            <nz-upload nzAction="/user/avatar" [nzShowUploadList]="false">
+                                <button nz-button class="button_view">
+                                    <i nz-icon nzType="upload"></i>
+                                    <span>Upload</span>
+                                </button>
+                            </nz-upload>
+                        </div>
+                    </div>
+                </nz-spin>
+            </nz-tab>
+        </nz-tabset>
+
+    </div>
+</nz-card>

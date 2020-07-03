@@ -1,0 +1,44 @@
+.main {
+    display: flex;
+    padding-top: 12px;
+  }
+  .left {
+    min-width: 500px;
+  }
+  .right {
+    flex: 1;
+    padding-left: 104px;
+  }
+  .right .avatar_title {
+    height: 22px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .right .avatar {
+    width: 144px;
+    height: 144px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .right .avatar img {
+    width: 100%;
+  }
+  .right .button_view {
+    width: 144px;
+    text-align: center;
+  }
+  @media screen and (max-width: 720) {
+    flex-direction: column-reverse;
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 448px;
+      padding: 20px;
+    }
+    .right .avatar_title {
+      display: none;
+    }
+  }
+  

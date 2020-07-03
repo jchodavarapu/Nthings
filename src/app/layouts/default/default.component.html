@@ -222,6 +222,10 @@
                 </i>
                 <span>Reports</span>
             </li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/profile']">
+                <i nz-icon nzType="user"></i>
+                <span>Account</span>
+            </li>
         </ul>
         <div class="py-4 mx-3"
             style="position:absolute;border-radius:8px;bottom:15px;width: -moz-available;width: -webkit-fill-available;width: fill-available;background-color:rgba(255, 255, 255, 0.1);">
@@ -241,7 +245,7 @@
                 <nz-dropdown-menu #prof_menu="nzDropdownMenu">
                     <ul nz-menu
                         style="width: -moz-available;width: -webkit-fill-available;width: fill-available;margin-top:-15px">
-                        <li nz-menu-item>Profile</li>
+                        <li  [routerLink]="['/profile']" nz-menu-item>Profile</li>
                         <li (click)="logout()" nz-menu-item>Logout</li>
                     </ul>
                 </nz-dropdown-menu>

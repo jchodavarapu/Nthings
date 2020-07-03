@@ -14,8 +14,11 @@ import { FormatsComponent } from './pages/formats/formats.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotComponent } from './pages/forgot/forgot.component'
+import { ProfileComponent } from './pages/profile/profile.component';
+
 import { DefaultComponent } from './layouts/default/default.component';
 import { AuthComponent } from './layouts/auth/auth.component';
+
 import { AuthGuard } from "./auth.guard"
 
 const routes: Routes = [
@@ -37,6 +40,7 @@ const routes: Routes = [
       { path: 'users', data: { breadcrumb: 'configure / users' }, component: UsersComponent, pathMatch: 'full' },
       { path: 'format', data: { breadcrumb: 'configure / format' }, component: FormatComponent, pathMatch: 'full' },
       { path: 'formats', data: { breadcrumb: 'configure / formats' }, component: FormatsComponent, pathMatch: 'full' },
+      { path: 'profile', data: { breadcrumb: 'profile' }, component: ProfileComponent, pathMatch: 'full' },
     ]
   },
   {
