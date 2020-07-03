@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Device, Channel } from 'src/app/core/models';
 import { Observable, from } from 'rxjs';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd';
 const columns = [
   { key: 'name', title: 'name', width: '100px' },
   { key: 'description', title: 'description', width: '100px' },
@@ -22,6 +23,13 @@ export class DeviceComponent implements OnInit {
   channels: Observable<Channel[]>
   columns = columns
   colrsDict = colrsDict
+
+  tplRunModal: NzModalRef;
+  tplRunModalButtonLoading: boolean = false;
+
+  tplConnectionModal: NzModalRef;
+  tplConnectionModalButtonLoading: boolean = false;
+
   device: Device = {
     name: 'temperature sensor',
     description: 'Awesome description',
@@ -30,7 +38,7 @@ export class DeviceComponent implements OnInit {
     channels: 4,
     status: 'active',
   }
-  constructor() {
+  constructor(private modalService: NzModalService) {
     this.channels = from([[
       {
         name: 'Channel - 1',
@@ -68,5 +76,52 @@ export class DeviceComponent implements OnInit {
   addWhitebg() {
     document.getElementById('inner-content').className = "inner-content inner-content-white-bg "
     return true
+  }
+
+
+  createTplRunModal(tplRunTitle: TemplateRef<{}>, tplRunContent: TemplateRef<{}>, tplRunFooter: TemplateRef<{}>): void {
+    this.tplRunModal = this.modalService.create({
+      nzTitle: tplRunTitle,
+      nzContent: tplRunContent,
+      nzFooter: tplRunFooter,
+      nzMaskClosable: false,
+      nzClosable: false,
+      nzOnOk: () => console.log('Click ok')
+    });
+  }
+
+  destroyTplRunModal(type: string): void {
+    if (type === 'cancel') {
+      this.tplRunModal.destroy();
+      return
+    }
+    this.tplRunModalButtonLoading = true;
+    setTimeout(() => {
+      this.tplRunModalButtonLoading = false;
+      this.tplRunModal.destroy();
+    }, 1000);
+  }
+
+  createTplConnectionModal(tplConnectionTitle: TemplateRef<{}>, tplConnectionContent: TemplateRef<{}>, tplConnectionFooter: TemplateRef<{}>): void {
+    this.tplConnectionModal = this.modalService.create({
+      nzTitle: tplConnectionTitle,
+      nzContent: tplConnectionContent,
+      nzFooter: tplConnectionFooter,
+      nzMaskClosable: false,
+      nzClosable: false,
+      nzOnOk: () => console.log('Click ok')
+    });
+  }
+
+  destroyTplConnectionModal(type: string): void {
+    if (type === 'cancel') {
+      this.tplConnectionModal.destroy();
+      return
+    }
+    this.tplConnectionModalButtonLoading = true;
+    setTimeout(() => {
+      this.tplConnectionModalButtonLoading = false;
+      this.tplConnectionModal.destroy();
+    }, 1000);
   }
 }
